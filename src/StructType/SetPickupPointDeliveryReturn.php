@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for SetPickupPointDeliveryReturn StructType
  */
+#[\AllowDynamicProperties]
 class SetPickupPointDeliveryReturn extends AbstractStructBase
 {
     /**
@@ -14,17 +15,15 @@ class SetPickupPointDeliveryReturn extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\ResponseObject
      */
-    public $WSResp;
+    protected ?ResponseObject $WSResp = null;
 
     /**
      * Constructor method for SetPickupPointDeliveryReturn
      *
      * @uses SetPickupPointDeliveryReturn::setWSResp()
      */
-    public function __construct(ResponseObject $wSResp = null)
+    public function __construct(?ResponseObject $wSResp = null)
     {
         $this
             ->setWSResp($wSResp)
@@ -33,22 +32,19 @@ class SetPickupPointDeliveryReturn extends AbstractStructBase
 
     /**
      * Get WSResp value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\ResponseObject|null
      */
-    public function getWSResp()
+    public function getWSResp(): ?ResponseObject
     {
         return $this->WSResp;
     }
 
     /**
      * Set WSResp value
-     *
-     * @return self
      */
-    public function setWSResp(ResponseObject $wSResp = null)
+    public function setWSResp(?ResponseObject $wSResp = null): self
     {
         $this->WSResp = $wSResp;
+
         return $this;
     }
 }

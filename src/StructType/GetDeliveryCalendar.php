@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetDeliveryCalendar StructType
  */
+#[\AllowDynamicProperties]
 class GetDeliveryCalendar extends AbstractStructBase
 {
     /**
@@ -15,17 +16,15 @@ class GetDeliveryCalendar extends AbstractStructBase
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\GetDeliveryCalendarRequest
      */
-    public $GetDeliveryCalendarRequest;
+    protected ?GetDeliveryCalendarRequest $GetDeliveryCalendarRequest;
 
     /**
      * Constructor method for GetDeliveryCalendar
      *
      * @uses GetDeliveryCalendar::setGetDeliveryCalendarRequest()
      */
-    public function __construct(GetDeliveryCalendarRequest $getDeliveryCalendarRequest = null)
+    public function __construct(?GetDeliveryCalendarRequest $getDeliveryCalendarRequest)
     {
         $this
             ->setGetDeliveryCalendarRequest($getDeliveryCalendarRequest)
@@ -34,22 +33,19 @@ class GetDeliveryCalendar extends AbstractStructBase
 
     /**
      * Get GetDeliveryCalendarRequest value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\GetDeliveryCalendarRequest
      */
-    public function getGetDeliveryCalendarRequest()
+    public function getGetDeliveryCalendarRequest(): GetDeliveryCalendarRequest
     {
         return $this->GetDeliveryCalendarRequest;
     }
 
     /**
      * Set GetDeliveryCalendarRequest value
-     *
-     * @return self
      */
-    public function setGetDeliveryCalendarRequest(GetDeliveryCalendarRequest $getDeliveryCalendarRequest = null)
+    public function setGetDeliveryCalendarRequest(?GetDeliveryCalendarRequest $getDeliveryCalendarRequest): self
     {
         $this->GetDeliveryCalendarRequest = $getDeliveryCalendarRequest;
+
         return $this;
     }
 }

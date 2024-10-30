@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for SetContainerReturn StructType
  */
+#[\AllowDynamicProperties]
 class SetContainerReturn extends AbstractStructBase
 {
     /**
@@ -14,46 +15,36 @@ class SetContainerReturn extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\ResponseObject
      */
-    public $WSResp;
+    protected ?ResponseObject $WSResp = null;
     /**
      * The CntrCode
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $CntrCode;
+    protected ?string $CntrCode = null;
     /**
      * The OrderID
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $OrderID;
+    protected ?string $OrderID = null;
     /**
      * The LabelUrl
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $LabelUrl;
+    protected ?string $LabelUrl = null;
     /**
      * The CABCode
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $CABCode;
+    protected ?string $CABCode = null;
 
     /**
      * Constructor method for SetContainerReturn
@@ -63,13 +54,8 @@ class SetContainerReturn extends AbstractStructBase
      * @uses SetContainerReturn::setOrderID()
      * @uses SetContainerReturn::setLabelUrl()
      * @uses SetContainerReturn::setCABCode()
-     *
-     * @param string $cntrCode
-     * @param string $orderID
-     * @param string $labelUrl
-     * @param string $cABCode
      */
-    public function __construct(ResponseObject $wSResp = null, $cntrCode = null, $orderID = null, $labelUrl = null, $cABCode = null)
+    public function __construct(?ResponseObject $wSResp = null, ?string $cntrCode = null, ?string $orderID = null, ?string $labelUrl = null, ?string $cABCode = null)
     {
         $this
             ->setWSResp($wSResp)
@@ -82,130 +68,107 @@ class SetContainerReturn extends AbstractStructBase
 
     /**
      * Get WSResp value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\ResponseObject|null
      */
-    public function getWSResp()
+    public function getWSResp(): ?ResponseObject
     {
         return $this->WSResp;
     }
 
     /**
      * Set WSResp value
-     *
-     * @return self
      */
-    public function setWSResp(ResponseObject $wSResp = null)
+    public function setWSResp(?ResponseObject $wSResp = null): self
     {
         $this->WSResp = $wSResp;
+
         return $this;
     }
 
     /**
      * Get CntrCode value
-     *
-     * @return string|null
      */
-    public function getCntrCode()
+    public function getCntrCode(): ?string
     {
         return $this->CntrCode;
     }
 
     /**
      * Set CntrCode value
-     *
-     * @param string $cntrCode
-     *
-     * @return self
      */
-    public function setCntrCode($cntrCode = null)
+    public function setCntrCode(?string $cntrCode = null): self
     {
         // validation for constraint: string
         if (null !== $cntrCode && !\is_string($cntrCode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($cntrCode, true), \gettype($cntrCode)), __LINE__);
         }
         $this->CntrCode = $cntrCode;
+
         return $this;
     }
 
     /**
      * Get OrderID value
-     *
-     * @return string|null
      */
-    public function getOrderID()
+    public function getOrderID(): ?string
     {
         return $this->OrderID;
     }
 
     /**
      * Set OrderID value
-     *
-     * @param string $orderID
-     *
-     * @return self
      */
-    public function setOrderID($orderID = null)
+    public function setOrderID(?string $orderID = null): self
     {
         // validation for constraint: string
         if (null !== $orderID && !\is_string($orderID)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($orderID, true), \gettype($orderID)), __LINE__);
         }
         $this->OrderID = $orderID;
+
         return $this;
     }
 
     /**
      * Get LabelUrl value
-     *
-     * @return string|null
      */
-    public function getLabelUrl()
+    public function getLabelUrl(): ?string
     {
         return $this->LabelUrl;
     }
 
     /**
      * Set LabelUrl value
-     *
-     * @param string $labelUrl
-     *
-     * @return self
      */
-    public function setLabelUrl($labelUrl = null)
+    public function setLabelUrl(?string $labelUrl = null): self
     {
         // validation for constraint: string
         if (null !== $labelUrl && !\is_string($labelUrl)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($labelUrl, true), \gettype($labelUrl)), __LINE__);
         }
         $this->LabelUrl = $labelUrl;
+
         return $this;
     }
 
     /**
      * Get CABCode value
-     *
-     * @return string|null
      */
-    public function getCABCode()
+    public function getCABCode(): ?string
     {
         return $this->CABCode;
     }
 
     /**
      * Set CABCode value
-     *
-     * @param string $cABCode
-     *
-     * @return self
      */
-    public function setCABCode($cABCode = null)
+    public function setCABCode(?string $cABCode = null): self
     {
         // validation for constraint: string
         if (null !== $cABCode && !\is_string($cABCode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($cABCode, true), \gettype($cABCode)), __LINE__);
         }
         $this->CABCode = $cABCode;
+
         return $this;
     }
 }

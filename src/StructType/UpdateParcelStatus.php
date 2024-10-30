@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for UpdateParcelStatus StructType
  */
+#[\AllowDynamicProperties]
 class UpdateParcelStatus extends AbstractStructBase
 {
     /**
@@ -15,17 +16,15 @@ class UpdateParcelStatus extends AbstractStructBase
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\UpdateParcelStatusRequest
      */
-    public $UpdateParcelStatusRequest;
+    protected ?UpdateParcelStatusRequest $UpdateParcelStatusRequest;
 
     /**
      * Constructor method for UpdateParcelStatus
      *
      * @uses UpdateParcelStatus::setUpdateParcelStatusRequest()
      */
-    public function __construct(UpdateParcelStatusRequest $updateParcelStatusRequest = null)
+    public function __construct(?UpdateParcelStatusRequest $updateParcelStatusRequest)
     {
         $this
             ->setUpdateParcelStatusRequest($updateParcelStatusRequest)
@@ -34,22 +33,19 @@ class UpdateParcelStatus extends AbstractStructBase
 
     /**
      * Get UpdateParcelStatusRequest value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\UpdateParcelStatusRequest
      */
-    public function getUpdateParcelStatusRequest()
+    public function getUpdateParcelStatusRequest(): UpdateParcelStatusRequest
     {
         return $this->UpdateParcelStatusRequest;
     }
 
     /**
      * Set UpdateParcelStatusRequest value
-     *
-     * @return self
      */
-    public function setUpdateParcelStatusRequest(UpdateParcelStatusRequest $updateParcelStatusRequest = null)
+    public function setUpdateParcelStatusRequest(?UpdateParcelStatusRequest $updateParcelStatusRequest): self
     {
         $this->UpdateParcelStatusRequest = $updateParcelStatusRequest;
+
         return $this;
     }
 }

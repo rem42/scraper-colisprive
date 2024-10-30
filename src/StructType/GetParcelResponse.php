@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetParcelResponse StructType
  */
+#[\AllowDynamicProperties]
 class GetParcelResponse extends AbstractStructBase
 {
     /**
@@ -14,17 +15,15 @@ class GetParcelResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\GetParcelReturn
      */
-    public $GetParcelResult;
+    protected ?GetParcelReturn $GetParcelResult = null;
 
     /**
      * Constructor method for GetParcelResponse
      *
      * @uses GetParcelResponse::setGetParcelResult()
      */
-    public function __construct(GetParcelReturn $getParcelResult = null)
+    public function __construct(?GetParcelReturn $getParcelResult = null)
     {
         $this
             ->setGetParcelResult($getParcelResult)
@@ -33,22 +32,19 @@ class GetParcelResponse extends AbstractStructBase
 
     /**
      * Get GetParcelResult value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\GetParcelReturn|null
      */
-    public function getGetParcelResult()
+    public function getGetParcelResult(): ?GetParcelReturn
     {
         return $this->GetParcelResult;
     }
 
     /**
      * Set GetParcelResult value
-     *
-     * @return self
      */
-    public function setGetParcelResult(GetParcelReturn $getParcelResult = null)
+    public function setGetParcelResult(?GetParcelReturn $getParcelResult = null): self
     {
         $this->GetParcelResult = $getParcelResult;
+
         return $this;
     }
 }

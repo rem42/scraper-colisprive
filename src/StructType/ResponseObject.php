@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for ResponseObject StructType
  */
+#[\AllowDynamicProperties]
 class ResponseObject extends AbstractStructBase
 {
     /**
@@ -14,30 +15,23 @@ class ResponseObject extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
-     *
-     * @var int
      */
-    public $RtnCode;
+    protected int $RtnCode;
     /**
      * The RtnMessage
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $RtnMessage;
+    protected ?string $RtnMessage = null;
 
     /**
      * Constructor method for ResponseObject
      *
      * @uses ResponseObject::setRtnCode()
      * @uses ResponseObject::setRtnMessage()
-     *
-     * @param int    $rtnCode
-     * @param string $rtnMessage
      */
-    public function __construct($rtnCode = null, $rtnMessage = null)
+    public function __construct(int $rtnCode, ?string $rtnMessage = null)
     {
         $this
             ->setRtnCode($rtnCode)
@@ -47,55 +41,45 @@ class ResponseObject extends AbstractStructBase
 
     /**
      * Get RtnCode value
-     *
-     * @return int
      */
-    public function getRtnCode()
+    public function getRtnCode(): int
     {
         return $this->RtnCode;
     }
 
     /**
      * Set RtnCode value
-     *
-     * @param int $rtnCode
-     *
-     * @return self
      */
-    public function setRtnCode($rtnCode = null)
+    public function setRtnCode(int $rtnCode): self
     {
         // validation for constraint: int
         if (null !== $rtnCode && !(\is_int($rtnCode) || ctype_digit($rtnCode))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($rtnCode, true), \gettype($rtnCode)), __LINE__);
         }
         $this->RtnCode = $rtnCode;
+
         return $this;
     }
 
     /**
      * Get RtnMessage value
-     *
-     * @return string|null
      */
-    public function getRtnMessage()
+    public function getRtnMessage(): ?string
     {
         return $this->RtnMessage;
     }
 
     /**
      * Set RtnMessage value
-     *
-     * @param string $rtnMessage
-     *
-     * @return self
      */
-    public function setRtnMessage($rtnMessage = null)
+    public function setRtnMessage(?string $rtnMessage = null): self
     {
         // validation for constraint: string
         if (null !== $rtnMessage && !\is_string($rtnMessage)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($rtnMessage, true), \gettype($rtnMessage)), __LINE__);
         }
         $this->RtnMessage = $rtnMessage;
+
         return $this;
     }
 }

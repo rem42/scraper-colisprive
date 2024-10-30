@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,218 +7,210 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for SetParcelRequest StructType
  */
+#[\AllowDynamicProperties]
 class SetParcelRequest extends AbstractStructBase
 {
+    /**
+     * The PclWeight
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 1
+     */
+    protected int $PclWeight;
+    /**
+     * The IsPclWithPOD
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 1
+     */
+    protected bool $IsPclWithPOD;
+    /**
+     * The LabelFormat
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 1
+     */
+    protected string $LabelFormat;
+    /**
+     * The SubAcc
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 0
+     */
+    protected ?string $SubAcc = null;
+    /**
+     * The AutoPrintPDF
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 0
+     */
+    protected ?string $AutoPrintPDF = null;
+    /**
+     * The CntrCode
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 0
+     */
+    protected ?string $CntrCode = null;
+    /**
+     * The DestType
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 0
+     */
+    protected ?string $DestType = null;
+    /**
+     * The DestName
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 0
+     */
+    protected ?string $DestName = null;
+    /**
+     * The SendType
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 0
+     */
+    protected ?string $SendType = null;
+    /**
+     * The SendName
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 0
+     */
+    protected ?string $SendName = null;
+    /**
+     * The CodeHub
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 0
+     */
+    protected ?string $CodeHub = null;
+    /**
+     * The SndZC
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 0
+     */
+    protected ?string $SndZC = null;
+    /**
+     * The HLQ
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 0
+     */
+    protected ?string $HLQ = null;
+    /**
+     * The Brand
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 0
+     */
+    protected ?string $Brand = null;
+    /**
+     * The ValueADValorem
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 0
+     */
+    protected ?string $ValueADValorem = null;
+    /**
+     * The TimeInfos
+     * Meta information extracted from the WSDL
+     * - maxOccurs: unbounded
+     * - minOccurs: 0
+     *
+     * @var array<\Scraper\ScraperColisPrive\StructType\TimeInfosObject>
+     */
+    protected ?array $TimeInfos = null;
     /**
      * The SecurityID
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\IdentificationObject
      */
-    public $SecurityID;
+    protected ?IdentificationObject $SecurityID;
     /**
      * The OrderID
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var string
      */
-    public $OrderID;
+    protected ?string $OrderID;
     /**
      * The CltNum
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var string
      */
-    public $CltNum;
+    protected ?string $CltNum;
     /**
      * The CsgAdd
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\DeliveryAddressObject
      */
-    public $CsgAdd;
+    protected ?DeliveryAddressObject $CsgAdd;
     /**
      * The PclShipDate
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var string
      */
-    public $PclShipDate;
-    /**
-     * The PclWeight
-     * Meta information extracted from the WSDL
-     * - maxOccurs: 1
-     * - minOccurs: 1
-     *
-     * @var int
-     */
-    public $PclWeight;
-    /**
-     * The IsPclWithPOD
-     * Meta information extracted from the WSDL
-     * - maxOccurs: 1
-     * - minOccurs: 1
-     *
-     * @var bool
-     */
-    public $IsPclWithPOD;
-    /**
-     * The LabelFormat
-     * Meta information extracted from the WSDL
-     * - maxOccurs: 1
-     * - minOccurs: 1
-     *
-     * @var string
-     */
-    public $LabelFormat;
+    protected ?string $PclShipDate;
     /**
      * The ChargeAmnt
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var float
      */
-    public $ChargeAmnt;
+    protected ?float $ChargeAmnt;
     /**
      * The ValueAmnt
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var float
      */
-    public $ValueAmnt;
+    protected ?float $ValueAmnt;
     /**
-     * The SubAcc
+     * The PclHeight
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
-     * - minOccurs: 0
-     *
-     * @var string
+     * - minOccurs: 1
+     * - nillable: true
      */
-    public $SubAcc;
+    protected ?int $PclHeight;
     /**
-     * The AutoPrintPDF
+     * The PclWidth
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
-     * - minOccurs: 0
-     *
-     * @var string
+     * - minOccurs: 1
+     * - nillable: true
      */
-    public $AutoPrintPDF;
+    protected ?int $PclWidth;
     /**
-     * The CntrCode
+     * The PclLength
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
-     * - minOccurs: 0
-     *
-     * @var string
+     * - minOccurs: 1
+     * - nillable: true
      */
-    public $CntrCode;
-    /**
-     * The DestType
-     * Meta information extracted from the WSDL
-     * - maxOccurs: 1
-     * - minOccurs: 0
-     *
-     * @var string
-     */
-    public $DestType;
-    /**
-     * The DestName
-     * Meta information extracted from the WSDL
-     * - maxOccurs: 1
-     * - minOccurs: 0
-     *
-     * @var string
-     */
-    public $DestName;
-    /**
-     * The SendType
-     * Meta information extracted from the WSDL
-     * - maxOccurs: 1
-     * - minOccurs: 0
-     *
-     * @var string
-     */
-    public $SendType;
-    /**
-     * The SendName
-     * Meta information extracted from the WSDL
-     * - maxOccurs: 1
-     * - minOccurs: 0
-     *
-     * @var string
-     */
-    public $SendName;
-    /**
-     * The CodeHub
-     * Meta information extracted from the WSDL
-     * - maxOccurs: 1
-     * - minOccurs: 0
-     *
-     * @var string
-     */
-    public $CodeHub;
-    /**
-     * The SndZC
-     * Meta information extracted from the WSDL
-     * - maxOccurs: 1
-     * - minOccurs: 0
-     *
-     * @var string
-     */
-    public $SndZC;
-    /**
-     * The HLQ
-     * Meta information extracted from the WSDL
-     * - maxOccurs: 1
-     * - minOccurs: 0
-     *
-     * @var string
-     */
-    public $HLQ;
-    /**
-     * The Brand
-     * Meta information extracted from the WSDL
-     * - maxOccurs: 1
-     * - minOccurs: 0
-     *
-     * @var string
-     */
-    public $Brand;
+    protected ?int $PclLength;
 
     /**
      * Constructor method for SetParcelRequest
      *
-     * @uses SetParcelRequest::setSecurityID()
-     * @uses SetParcelRequest::setOrderID()
-     * @uses SetParcelRequest::setCltNum()
-     * @uses SetParcelRequest::setCsgAdd()
-     * @uses SetParcelRequest::setPclShipDate()
      * @uses SetParcelRequest::setPclWeight()
      * @uses SetParcelRequest::setIsPclWithPOD()
      * @uses SetParcelRequest::setLabelFormat()
-     * @uses SetParcelRequest::setChargeAmnt()
-     * @uses SetParcelRequest::setValueAmnt()
      * @uses SetParcelRequest::setSubAcc()
      * @uses SetParcelRequest::setAutoPrintPDF()
      * @uses SetParcelRequest::setCntrCode()
@@ -230,40 +222,27 @@ class SetParcelRequest extends AbstractStructBase
      * @uses SetParcelRequest::setSndZC()
      * @uses SetParcelRequest::setHLQ()
      * @uses SetParcelRequest::setBrand()
+     * @uses SetParcelRequest::setValueADValorem()
+     * @uses SetParcelRequest::setTimeInfos()
+     * @uses SetParcelRequest::setSecurityID()
+     * @uses SetParcelRequest::setOrderID()
+     * @uses SetParcelRequest::setCltNum()
+     * @uses SetParcelRequest::setCsgAdd()
+     * @uses SetParcelRequest::setPclShipDate()
+     * @uses SetParcelRequest::setChargeAmnt()
+     * @uses SetParcelRequest::setValueAmnt()
+     * @uses SetParcelRequest::setPclHeight()
+     * @uses SetParcelRequest::setPclWidth()
+     * @uses SetParcelRequest::setPclLength()
      *
-     * @param string $orderID
-     * @param string $cltNum
-     * @param string $pclShipDate
-     * @param int    $pclWeight
-     * @param bool   $isPclWithPOD
-     * @param string $labelFormat
-     * @param float  $chargeAmnt
-     * @param float  $valueAmnt
-     * @param string $subAcc
-     * @param string $autoPrintPDF
-     * @param string $cntrCode
-     * @param string $destType
-     * @param string $destName
-     * @param string $sendType
-     * @param string $sendName
-     * @param string $codeHub
-     * @param string $sndZC
-     * @param string $hLQ
-     * @param string $brand
+     * @param array<\Scraper\ScraperColisPrive\StructType\TimeInfosObject> $timeInfos
      */
-    public function __construct(IdentificationObject $securityID = null, $orderID = null, $cltNum = null, DeliveryAddressObject $csgAdd = null, $pclShipDate = null, $pclWeight = null, $isPclWithPOD = null, $labelFormat = null, $chargeAmnt = null, $valueAmnt = null, $subAcc = null, $autoPrintPDF = null, $cntrCode = null, $destType = null, $destName = null, $sendType = null, $sendName = null, $codeHub = null, $sndZC = null, $hLQ = null, $brand = null)
+    public function __construct(int $pclWeight, bool $isPclWithPOD, string $labelFormat, ?string $subAcc = null, ?string $autoPrintPDF = null, ?string $cntrCode = null, ?string $destType = null, ?string $destName = null, ?string $sendType = null, ?string $sendName = null, ?string $codeHub = null, ?string $sndZC = null, ?string $hLQ = null, ?string $brand = null, ?string $valueADValorem = null, ?array $timeInfos = null, ?IdentificationObject $securityID, ?string $orderID, ?string $cltNum, ?DeliveryAddressObject $csgAdd, ?string $pclShipDate, ?float $chargeAmnt, ?float $valueAmnt, ?int $pclHeight, ?int $pclWidth, ?int $pclLength)
     {
         $this
-            ->setSecurityID($securityID)
-            ->setOrderID($orderID)
-            ->setCltNum($cltNum)
-            ->setCsgAdd($csgAdd)
-            ->setPclShipDate($pclShipDate)
             ->setPclWeight($pclWeight)
             ->setIsPclWithPOD($isPclWithPOD)
             ->setLabelFormat($labelFormat)
-            ->setChargeAmnt($chargeAmnt)
-            ->setValueAmnt($valueAmnt)
             ->setSubAcc($subAcc)
             ->setAutoPrintPDF($autoPrintPDF)
             ->setCntrCode($cntrCode)
@@ -275,192 +254,69 @@ class SetParcelRequest extends AbstractStructBase
             ->setSndZC($sndZC)
             ->setHLQ($hLQ)
             ->setBrand($brand)
+            ->setValueADValorem($valueADValorem)
+            ->setTimeInfos($timeInfos)
+            ->setSecurityID($securityID)
+            ->setOrderID($orderID)
+            ->setCltNum($cltNum)
+            ->setCsgAdd($csgAdd)
+            ->setPclShipDate($pclShipDate)
+            ->setChargeAmnt($chargeAmnt)
+            ->setValueAmnt($valueAmnt)
+            ->setPclHeight($pclHeight)
+            ->setPclWidth($pclWidth)
+            ->setPclLength($pclLength)
         ;
     }
 
     /**
-     * Get SecurityID value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\IdentificationObject
-     */
-    public function getSecurityID()
-    {
-        return $this->SecurityID;
-    }
-
-    /**
-     * Set SecurityID value
-     *
-     * @return self
-     */
-    public function setSecurityID(IdentificationObject $securityID = null)
-    {
-        $this->SecurityID = $securityID;
-        return $this;
-    }
-
-    /**
-     * Get OrderID value
-     *
-     * @return string
-     */
-    public function getOrderID()
-    {
-        return $this->OrderID;
-    }
-
-    /**
-     * Set OrderID value
-     *
-     * @param string $orderID
-     *
-     * @return self
-     */
-    public function setOrderID($orderID = null)
-    {
-        // validation for constraint: string
-        if (null !== $orderID && !\is_string($orderID)) {
-            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($orderID, true), \gettype($orderID)), __LINE__);
-        }
-        $this->OrderID = $orderID;
-        return $this;
-    }
-
-    /**
-     * Get CltNum value
-     *
-     * @return string
-     */
-    public function getCltNum()
-    {
-        return $this->CltNum;
-    }
-
-    /**
-     * Set CltNum value
-     *
-     * @param string $cltNum
-     *
-     * @return self
-     */
-    public function setCltNum($cltNum = null)
-    {
-        // validation for constraint: string
-        if (null !== $cltNum && !\is_string($cltNum)) {
-            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($cltNum, true), \gettype($cltNum)), __LINE__);
-        }
-        $this->CltNum = $cltNum;
-        return $this;
-    }
-
-    /**
-     * Get CsgAdd value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\DeliveryAddressObject
-     */
-    public function getCsgAdd()
-    {
-        return $this->CsgAdd;
-    }
-
-    /**
-     * Set CsgAdd value
-     *
-     * @return self
-     */
-    public function setCsgAdd(DeliveryAddressObject $csgAdd = null)
-    {
-        $this->CsgAdd = $csgAdd;
-        return $this;
-    }
-
-    /**
-     * Get PclShipDate value
-     *
-     * @return string
-     */
-    public function getPclShipDate()
-    {
-        return $this->PclShipDate;
-    }
-
-    /**
-     * Set PclShipDate value
-     *
-     * @param string $pclShipDate
-     *
-     * @return self
-     */
-    public function setPclShipDate($pclShipDate = null)
-    {
-        // validation for constraint: string
-        if (null !== $pclShipDate && !\is_string($pclShipDate)) {
-            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($pclShipDate, true), \gettype($pclShipDate)), __LINE__);
-        }
-        $this->PclShipDate = $pclShipDate;
-        return $this;
-    }
-
-    /**
      * Get PclWeight value
-     *
-     * @return int
      */
-    public function getPclWeight()
+    public function getPclWeight(): int
     {
         return $this->PclWeight;
     }
 
     /**
      * Set PclWeight value
-     *
-     * @param int $pclWeight
-     *
-     * @return self
      */
-    public function setPclWeight($pclWeight = null)
+    public function setPclWeight(int $pclWeight): self
     {
         // validation for constraint: int
         if (null !== $pclWeight && !(\is_int($pclWeight) || ctype_digit($pclWeight))) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($pclWeight, true), \gettype($pclWeight)), __LINE__);
         }
         $this->PclWeight = $pclWeight;
+
         return $this;
     }
 
     /**
      * Get IsPclWithPOD value
-     *
-     * @return bool
      */
-    public function getIsPclWithPOD()
+    public function getIsPclWithPOD(): bool
     {
         return $this->IsPclWithPOD;
     }
 
     /**
      * Set IsPclWithPOD value
-     *
-     * @param bool $isPclWithPOD
-     *
-     * @return self
      */
-    public function setIsPclWithPOD($isPclWithPOD = null)
+    public function setIsPclWithPOD(bool $isPclWithPOD): self
     {
         // validation for constraint: boolean
         if (null !== $isPclWithPOD && !\is_bool($isPclWithPOD)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($isPclWithPOD, true), \gettype($isPclWithPOD)), __LINE__);
         }
         $this->IsPclWithPOD = $isPclWithPOD;
+
         return $this;
     }
 
     /**
      * Get LabelFormat value
-     *
-     * @return string
      */
-    public function getLabelFormat()
+    public function getLabelFormat(): string
     {
         return $this->LabelFormat;
     }
@@ -471,370 +327,566 @@ class SetParcelRequest extends AbstractStructBase
      * @uses \Scraper\ScraperColisPrive\EnumType\EnumLabelFormat::valueIsValid()
      * @uses \Scraper\ScraperColisPrive\EnumType\EnumLabelFormat::getValidValues()
      *
-     * @param string $labelFormat
-     *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setLabelFormat($labelFormat = null)
+    public function setLabelFormat(string $labelFormat): self
     {
         // validation for constraint: enumeration
         if (!\Scraper\ScraperColisPrive\EnumType\EnumLabelFormat::valueIsValid($labelFormat)) {
             throw new \InvalidArgumentException(sprintf('Invalid value(s) %s, please use one of: %s from enumeration class \Scraper\ScraperColisPrive\EnumType\EnumLabelFormat', \is_array($labelFormat) ? implode(', ', $labelFormat) : var_export($labelFormat, true), implode(', ', \Scraper\ScraperColisPrive\EnumType\EnumLabelFormat::getValidValues())), __LINE__);
         }
         $this->LabelFormat = $labelFormat;
-        return $this;
-    }
 
-    /**
-     * Get ChargeAmnt value
-     *
-     * @return float
-     */
-    public function getChargeAmnt()
-    {
-        return $this->ChargeAmnt;
-    }
-
-    /**
-     * Set ChargeAmnt value
-     *
-     * @param float $chargeAmnt
-     *
-     * @return self
-     */
-    public function setChargeAmnt($chargeAmnt = null)
-    {
-        // validation for constraint: float
-        if (null !== $chargeAmnt && !(\is_float($chargeAmnt) || is_numeric($chargeAmnt))) {
-            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($chargeAmnt, true), \gettype($chargeAmnt)), __LINE__);
-        }
-        $this->ChargeAmnt = $chargeAmnt;
-        return $this;
-    }
-
-    /**
-     * Get ValueAmnt value
-     *
-     * @return float
-     */
-    public function getValueAmnt()
-    {
-        return $this->ValueAmnt;
-    }
-
-    /**
-     * Set ValueAmnt value
-     *
-     * @param float $valueAmnt
-     *
-     * @return self
-     */
-    public function setValueAmnt($valueAmnt = null)
-    {
-        // validation for constraint: float
-        if (null !== $valueAmnt && !(\is_float($valueAmnt) || is_numeric($valueAmnt))) {
-            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($valueAmnt, true), \gettype($valueAmnt)), __LINE__);
-        }
-        $this->ValueAmnt = $valueAmnt;
         return $this;
     }
 
     /**
      * Get SubAcc value
-     *
-     * @return string|null
      */
-    public function getSubAcc()
+    public function getSubAcc(): ?string
     {
         return $this->SubAcc;
     }
 
     /**
      * Set SubAcc value
-     *
-     * @param string $subAcc
-     *
-     * @return self
      */
-    public function setSubAcc($subAcc = null)
+    public function setSubAcc(?string $subAcc = null): self
     {
         // validation for constraint: string
         if (null !== $subAcc && !\is_string($subAcc)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($subAcc, true), \gettype($subAcc)), __LINE__);
         }
         $this->SubAcc = $subAcc;
+
         return $this;
     }
 
     /**
      * Get AutoPrintPDF value
-     *
-     * @return string|null
      */
-    public function getAutoPrintPDF()
+    public function getAutoPrintPDF(): ?string
     {
         return $this->AutoPrintPDF;
     }
 
     /**
      * Set AutoPrintPDF value
-     *
-     * @param string $autoPrintPDF
-     *
-     * @return self
      */
-    public function setAutoPrintPDF($autoPrintPDF = null)
+    public function setAutoPrintPDF(?string $autoPrintPDF = null): self
     {
         // validation for constraint: string
         if (null !== $autoPrintPDF && !\is_string($autoPrintPDF)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($autoPrintPDF, true), \gettype($autoPrintPDF)), __LINE__);
         }
         $this->AutoPrintPDF = $autoPrintPDF;
+
         return $this;
     }
 
     /**
      * Get CntrCode value
-     *
-     * @return string|null
      */
-    public function getCntrCode()
+    public function getCntrCode(): ?string
     {
         return $this->CntrCode;
     }
 
     /**
      * Set CntrCode value
-     *
-     * @param string $cntrCode
-     *
-     * @return self
      */
-    public function setCntrCode($cntrCode = null)
+    public function setCntrCode(?string $cntrCode = null): self
     {
         // validation for constraint: string
         if (null !== $cntrCode && !\is_string($cntrCode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($cntrCode, true), \gettype($cntrCode)), __LINE__);
         }
         $this->CntrCode = $cntrCode;
+
         return $this;
     }
 
     /**
      * Get DestType value
-     *
-     * @return string|null
      */
-    public function getDestType()
+    public function getDestType(): ?string
     {
         return $this->DestType;
     }
 
     /**
      * Set DestType value
-     *
-     * @param string $destType
-     *
-     * @return self
      */
-    public function setDestType($destType = null)
+    public function setDestType(?string $destType = null): self
     {
         // validation for constraint: string
         if (null !== $destType && !\is_string($destType)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($destType, true), \gettype($destType)), __LINE__);
         }
         $this->DestType = $destType;
+
         return $this;
     }
 
     /**
      * Get DestName value
-     *
-     * @return string|null
      */
-    public function getDestName()
+    public function getDestName(): ?string
     {
         return $this->DestName;
     }
 
     /**
      * Set DestName value
-     *
-     * @param string $destName
-     *
-     * @return self
      */
-    public function setDestName($destName = null)
+    public function setDestName(?string $destName = null): self
     {
         // validation for constraint: string
         if (null !== $destName && !\is_string($destName)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($destName, true), \gettype($destName)), __LINE__);
         }
         $this->DestName = $destName;
+
         return $this;
     }
 
     /**
      * Get SendType value
-     *
-     * @return string|null
      */
-    public function getSendType()
+    public function getSendType(): ?string
     {
         return $this->SendType;
     }
 
     /**
      * Set SendType value
-     *
-     * @param string $sendType
-     *
-     * @return self
      */
-    public function setSendType($sendType = null)
+    public function setSendType(?string $sendType = null): self
     {
         // validation for constraint: string
         if (null !== $sendType && !\is_string($sendType)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($sendType, true), \gettype($sendType)), __LINE__);
         }
         $this->SendType = $sendType;
+
         return $this;
     }
 
     /**
      * Get SendName value
-     *
-     * @return string|null
      */
-    public function getSendName()
+    public function getSendName(): ?string
     {
         return $this->SendName;
     }
 
     /**
      * Set SendName value
-     *
-     * @param string $sendName
-     *
-     * @return self
      */
-    public function setSendName($sendName = null)
+    public function setSendName(?string $sendName = null): self
     {
         // validation for constraint: string
         if (null !== $sendName && !\is_string($sendName)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($sendName, true), \gettype($sendName)), __LINE__);
         }
         $this->SendName = $sendName;
+
         return $this;
     }
 
     /**
      * Get CodeHub value
-     *
-     * @return string|null
      */
-    public function getCodeHub()
+    public function getCodeHub(): ?string
     {
         return $this->CodeHub;
     }
 
     /**
      * Set CodeHub value
-     *
-     * @param string $codeHub
-     *
-     * @return self
      */
-    public function setCodeHub($codeHub = null)
+    public function setCodeHub(?string $codeHub = null): self
     {
         // validation for constraint: string
         if (null !== $codeHub && !\is_string($codeHub)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($codeHub, true), \gettype($codeHub)), __LINE__);
         }
         $this->CodeHub = $codeHub;
+
         return $this;
     }
 
     /**
      * Get SndZC value
-     *
-     * @return string|null
      */
-    public function getSndZC()
+    public function getSndZC(): ?string
     {
         return $this->SndZC;
     }
 
     /**
      * Set SndZC value
-     *
-     * @param string $sndZC
-     *
-     * @return self
      */
-    public function setSndZC($sndZC = null)
+    public function setSndZC(?string $sndZC = null): self
     {
         // validation for constraint: string
         if (null !== $sndZC && !\is_string($sndZC)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($sndZC, true), \gettype($sndZC)), __LINE__);
         }
         $this->SndZC = $sndZC;
+
         return $this;
     }
 
     /**
      * Get HLQ value
-     *
-     * @return string|null
      */
-    public function getHLQ()
+    public function getHLQ(): ?string
     {
         return $this->HLQ;
     }
 
     /**
      * Set HLQ value
-     *
-     * @param string $hLQ
-     *
-     * @return self
      */
-    public function setHLQ($hLQ = null)
+    public function setHLQ(?string $hLQ = null): self
     {
         // validation for constraint: string
         if (null !== $hLQ && !\is_string($hLQ)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($hLQ, true), \gettype($hLQ)), __LINE__);
         }
         $this->HLQ = $hLQ;
+
         return $this;
     }
 
     /**
      * Get Brand value
-     *
-     * @return string|null
      */
-    public function getBrand()
+    public function getBrand(): ?string
     {
         return $this->Brand;
     }
 
     /**
      * Set Brand value
-     *
-     * @param string $brand
-     *
-     * @return self
      */
-    public function setBrand($brand = null)
+    public function setBrand(?string $brand = null): self
     {
         // validation for constraint: string
         if (null !== $brand && !\is_string($brand)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($brand, true), \gettype($brand)), __LINE__);
         }
         $this->Brand = $brand;
+
+        return $this;
+    }
+
+    /**
+     * Get ValueADValorem value
+     */
+    public function getValueADValorem(): ?string
+    {
+        return $this->ValueADValorem;
+    }
+
+    /**
+     * Set ValueADValorem value
+     */
+    public function setValueADValorem(?string $valueADValorem = null): self
+    {
+        // validation for constraint: string
+        if (null !== $valueADValorem && !\is_string($valueADValorem)) {
+            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($valueADValorem, true), \gettype($valueADValorem)), __LINE__);
+        }
+        $this->ValueADValorem = $valueADValorem;
+
+        return $this;
+    }
+
+    /**
+     * Get TimeInfos value
+     *
+     * @return array<\Scraper\ScraperColisPrive\StructType\TimeInfosObject>
+     */
+    public function getTimeInfos(): ?array
+    {
+        return $this->TimeInfos;
+    }
+
+    /**
+     * This method is responsible for validating the value(s) passed to the setTimeInfos method
+     * This method is willingly generated in order to preserve the one-line inline validation within the setTimeInfos method
+     * This has to validate that each item contained by the array match the itemType constraint
+     *
+     * @return string A non-empty message if the values does not match the validation rules
+     */
+    public static function validateTimeInfosForArrayConstraintFromSetTimeInfos(?array $values = []): string
+    {
+        if (!\is_array($values)) {
+            return '';
+        }
+        $message = '';
+        $invalidValues = [];
+
+        foreach ($values as $setParcelRequestTimeInfosItem) {
+            // validation for constraint: itemType
+            if (!$setParcelRequestTimeInfosItem instanceof TimeInfosObject) {
+                $invalidValues[] = \is_object($setParcelRequestTimeInfosItem) ? $setParcelRequestTimeInfosItem::class : sprintf('%s(%s)', \gettype($setParcelRequestTimeInfosItem), var_export($setParcelRequestTimeInfosItem, true));
+            }
+        }
+
+        if (!empty($invalidValues)) {
+            $message = sprintf('The TimeInfos property can only contain items of type \Scraper\ScraperColisPrive\StructType\TimeInfosObject, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
+        }
+        unset($invalidValues);
+
+        return $message;
+    }
+
+    /**
+     * Set TimeInfos value
+     *
+     * @param array<\Scraper\ScraperColisPrive\StructType\TimeInfosObject> $timeInfos
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function setTimeInfos(?array $timeInfos = null): self
+    {
+        // validation for constraint: array
+        if ('' !== ($timeInfosArrayErrorMessage = self::validateTimeInfosForArrayConstraintFromSetTimeInfos($timeInfos))) {
+            throw new \InvalidArgumentException($timeInfosArrayErrorMessage, __LINE__);
+        }
+        $this->TimeInfos = $timeInfos;
+
+        return $this;
+    }
+
+    /**
+     * Add item to TimeInfos value
+     *
+     * @throws \InvalidArgumentException
+     */
+    public function addToTimeInfos(TimeInfosObject $item): self
+    {
+        // validation for constraint: itemType
+        if (!$item instanceof TimeInfosObject) {
+            throw new \InvalidArgumentException(sprintf('The TimeInfos property can only contain items of type \Scraper\ScraperColisPrive\StructType\TimeInfosObject, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
+        }
+        $this->TimeInfos[] = $item;
+
+        return $this;
+    }
+
+    /**
+     * Get SecurityID value
+     */
+    public function getSecurityID(): IdentificationObject
+    {
+        return $this->SecurityID;
+    }
+
+    /**
+     * Set SecurityID value
+     */
+    public function setSecurityID(?IdentificationObject $securityID): self
+    {
+        $this->SecurityID = $securityID;
+
+        return $this;
+    }
+
+    /**
+     * Get OrderID value
+     */
+    public function getOrderID(): string
+    {
+        return $this->OrderID;
+    }
+
+    /**
+     * Set OrderID value
+     */
+    public function setOrderID(?string $orderID): self
+    {
+        // validation for constraint: string
+        if (null !== $orderID && !\is_string($orderID)) {
+            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($orderID, true), \gettype($orderID)), __LINE__);
+        }
+        $this->OrderID = $orderID;
+
+        return $this;
+    }
+
+    /**
+     * Get CltNum value
+     */
+    public function getCltNum(): string
+    {
+        return $this->CltNum;
+    }
+
+    /**
+     * Set CltNum value
+     */
+    public function setCltNum(?string $cltNum): self
+    {
+        // validation for constraint: string
+        if (null !== $cltNum && !\is_string($cltNum)) {
+            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($cltNum, true), \gettype($cltNum)), __LINE__);
+        }
+        $this->CltNum = $cltNum;
+
+        return $this;
+    }
+
+    /**
+     * Get CsgAdd value
+     */
+    public function getCsgAdd(): DeliveryAddressObject
+    {
+        return $this->CsgAdd;
+    }
+
+    /**
+     * Set CsgAdd value
+     */
+    public function setCsgAdd(?DeliveryAddressObject $csgAdd): self
+    {
+        $this->CsgAdd = $csgAdd;
+
+        return $this;
+    }
+
+    /**
+     * Get PclShipDate value
+     */
+    public function getPclShipDate(): string
+    {
+        return $this->PclShipDate;
+    }
+
+    /**
+     * Set PclShipDate value
+     */
+    public function setPclShipDate(?string $pclShipDate): self
+    {
+        // validation for constraint: string
+        if (null !== $pclShipDate && !\is_string($pclShipDate)) {
+            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($pclShipDate, true), \gettype($pclShipDate)), __LINE__);
+        }
+        $this->PclShipDate = $pclShipDate;
+
+        return $this;
+    }
+
+    /**
+     * Get ChargeAmnt value
+     */
+    public function getChargeAmnt(): float
+    {
+        return $this->ChargeAmnt;
+    }
+
+    /**
+     * Set ChargeAmnt value
+     */
+    public function setChargeAmnt(?float $chargeAmnt): self
+    {
+        // validation for constraint: float
+        if (null !== $chargeAmnt && !(\is_float($chargeAmnt) || is_numeric($chargeAmnt))) {
+            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($chargeAmnt, true), \gettype($chargeAmnt)), __LINE__);
+        }
+        $this->ChargeAmnt = $chargeAmnt;
+
+        return $this;
+    }
+
+    /**
+     * Get ValueAmnt value
+     */
+    public function getValueAmnt(): float
+    {
+        return $this->ValueAmnt;
+    }
+
+    /**
+     * Set ValueAmnt value
+     */
+    public function setValueAmnt(?float $valueAmnt): self
+    {
+        // validation for constraint: float
+        if (null !== $valueAmnt && !(\is_float($valueAmnt) || is_numeric($valueAmnt))) {
+            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a float value, %s given', var_export($valueAmnt, true), \gettype($valueAmnt)), __LINE__);
+        }
+        $this->ValueAmnt = $valueAmnt;
+
+        return $this;
+    }
+
+    /**
+     * Get PclHeight value
+     */
+    public function getPclHeight(): int
+    {
+        return $this->PclHeight;
+    }
+
+    /**
+     * Set PclHeight value
+     */
+    public function setPclHeight(?int $pclHeight): self
+    {
+        // validation for constraint: int
+        if (null !== $pclHeight && !(\is_int($pclHeight) || ctype_digit($pclHeight))) {
+            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($pclHeight, true), \gettype($pclHeight)), __LINE__);
+        }
+        $this->PclHeight = $pclHeight;
+
+        return $this;
+    }
+
+    /**
+     * Get PclWidth value
+     */
+    public function getPclWidth(): int
+    {
+        return $this->PclWidth;
+    }
+
+    /**
+     * Set PclWidth value
+     */
+    public function setPclWidth(?int $pclWidth): self
+    {
+        // validation for constraint: int
+        if (null !== $pclWidth && !(\is_int($pclWidth) || ctype_digit($pclWidth))) {
+            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($pclWidth, true), \gettype($pclWidth)), __LINE__);
+        }
+        $this->PclWidth = $pclWidth;
+
+        return $this;
+    }
+
+    /**
+     * Get PclLength value
+     */
+    public function getPclLength(): int
+    {
+        return $this->PclLength;
+    }
+
+    /**
+     * Set PclLength value
+     */
+    public function setPclLength(?int $pclLength): self
+    {
+        // validation for constraint: int
+        if (null !== $pclLength && !(\is_int($pclLength) || ctype_digit($pclLength))) {
+            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide an integer value, %s given', var_export($pclLength, true), \gettype($pclLength)), __LINE__);
+        }
+        $this->PclLength = $pclLength;
+
         return $this;
     }
 }

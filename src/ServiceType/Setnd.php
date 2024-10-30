@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\ServiceType;
 
@@ -13,16 +13,10 @@ class Setnd extends AbstractSoapClientBase
      * Sets the AuthenticationHeader SoapHeader param
      *
      * @uses AbstractSoapClientBase::setSoapHeader()
-     *
-     * @param string $nameSpace
-     * @param bool   $mustUnderstand
-     * @param string $actor
-     *
-     * @return bool
      */
-    public function setSoapHeaderAuthenticationHeader(\Scraper\ScraperColisPrive\StructType\AuthenticationHeader $authenticationHeader, $nameSpace = 'http://colisprive.com/externe/1.0/', $mustUnderstand = false, $actor = null)
+    public function setSoapHeaderAuthenticationHeader(\Scraper\ScraperColisPrive\StructType\AuthenticationHeader $authenticationHeader, string $namespace = 'http://colisprive.com/externe/1.0/', bool $mustUnderstand = false, ?string $actor = null): self
     {
-        return $this->setSoapHeader($nameSpace, 'AuthenticationHeader', $authenticationHeader, $mustUnderstand, $actor);
+        return $this->setSoapHeader($namespace, 'AuthenticationHeader', $authenticationHeader, $mustUnderstand, $actor);
     }
 
     /**
@@ -36,7 +30,6 @@ class Setnd extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperColisPrive\StructType\Set2ndDeliveryResponse|bool
@@ -44,10 +37,14 @@ class Setnd extends AbstractSoapClientBase
     public function Set2ndDelivery(\Scraper\ScraperColisPrive\StructType\Set2ndDelivery $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->Set2ndDelivery($parameters));
-            return $this->getResult();
+            $this->setResult($resultSet2ndDelivery = $this->getSoapClient()->__soapCall('Set2ndDelivery', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultSet2ndDelivery;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }

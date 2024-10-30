@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\ServiceType;
 
@@ -13,16 +13,10 @@ class Set extends AbstractSoapClientBase
      * Sets the AuthenticationHeader SoapHeader param
      *
      * @uses AbstractSoapClientBase::setSoapHeader()
-     *
-     * @param string $nameSpace
-     * @param bool   $mustUnderstand
-     * @param string $actor
-     *
-     * @return bool
      */
-    public function setSoapHeaderAuthenticationHeader(\Scraper\ScraperColisPrive\StructType\AuthenticationHeader $authenticationHeader, $nameSpace = 'http://colisprive.com/externe/1.0/', $mustUnderstand = false, $actor = null)
+    public function setSoapHeaderAuthenticationHeader(\Scraper\ScraperColisPrive\StructType\AuthenticationHeader $authenticationHeader, string $namespace = 'http://colisprive.com/externe/1.0/', bool $mustUnderstand = false, ?string $actor = null): self
     {
-        return $this->setSoapHeader($nameSpace, 'AuthenticationHeader', $authenticationHeader, $mustUnderstand, $actor);
+        return $this->setSoapHeader($namespace, 'AuthenticationHeader', $authenticationHeader, $mustUnderstand, $actor);
     }
 
     /**
@@ -36,7 +30,6 @@ class Set extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperColisPrive\StructType\SetParcelResponse|bool
@@ -44,10 +37,14 @@ class Set extends AbstractSoapClientBase
     public function SetParcel(\Scraper\ScraperColisPrive\StructType\SetParcel $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->SetParcel($parameters));
-            return $this->getResult();
+            $this->setResult($resultSetParcel = $this->getSoapClient()->__soapCall('SetParcel', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultSetParcel;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -63,7 +60,6 @@ class Set extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperColisPrive\StructType\SetContainerResponse|bool
@@ -71,10 +67,14 @@ class Set extends AbstractSoapClientBase
     public function SetContainer(\Scraper\ScraperColisPrive\StructType\SetContainer $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->SetContainer($parameters));
-            return $this->getResult();
+            $this->setResult($resultSetContainer = $this->getSoapClient()->__soapCall('SetContainer', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultSetContainer;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -90,7 +90,6 @@ class Set extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperColisPrive\StructType\SetShipmentResponse|bool
@@ -98,10 +97,14 @@ class Set extends AbstractSoapClientBase
     public function SetShipment(\Scraper\ScraperColisPrive\StructType\SetShipment $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->SetShipment($parameters));
-            return $this->getResult();
+            $this->setResult($resultSetShipment = $this->getSoapClient()->__soapCall('SetShipment', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultSetShipment;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }
@@ -117,7 +120,6 @@ class Set extends AbstractSoapClientBase
      *
      * @uses AbstractSoapClientBase::getSoapClient()
      * @uses AbstractSoapClientBase::setResult()
-     * @uses AbstractSoapClientBase::getResult()
      * @uses AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperColisPrive\StructType\SetPickupPointDeliveryResponse|bool
@@ -125,10 +127,14 @@ class Set extends AbstractSoapClientBase
     public function SetPickupPointDelivery(\Scraper\ScraperColisPrive\StructType\SetPickupPointDelivery $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->SetPickupPointDelivery($parameters));
-            return $this->getResult();
+            $this->setResult($resultSetPickupPointDelivery = $this->getSoapClient()->__soapCall('SetPickupPointDelivery', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultSetPickupPointDelivery;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }

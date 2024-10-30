@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetPickupPointRequest StructType
  */
+#[\AllowDynamicProperties]
 class GetPickupPointRequest extends AbstractStructBase
 {
     /**
@@ -15,30 +16,24 @@ class GetPickupPointRequest extends AbstractStructBase
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\IdentificationObject
      */
-    public $SecurityID;
+    protected ?IdentificationObject $SecurityID;
     /**
      * The PckCode
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var string
      */
-    public $PckCode;
+    protected ?string $PckCode;
 
     /**
      * Constructor method for GetPickupPointRequest
      *
      * @uses GetPickupPointRequest::setSecurityID()
      * @uses GetPickupPointRequest::setPckCode()
-     *
-     * @param string $pckCode
      */
-    public function __construct(IdentificationObject $securityID = null, $pckCode = null)
+    public function __construct(?IdentificationObject $securityID, ?string $pckCode)
     {
         $this
             ->setSecurityID($securityID)
@@ -48,49 +43,41 @@ class GetPickupPointRequest extends AbstractStructBase
 
     /**
      * Get SecurityID value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\IdentificationObject
      */
-    public function getSecurityID()
+    public function getSecurityID(): IdentificationObject
     {
         return $this->SecurityID;
     }
 
     /**
      * Set SecurityID value
-     *
-     * @return self
      */
-    public function setSecurityID(IdentificationObject $securityID = null)
+    public function setSecurityID(?IdentificationObject $securityID): self
     {
         $this->SecurityID = $securityID;
+
         return $this;
     }
 
     /**
      * Get PckCode value
-     *
-     * @return string
      */
-    public function getPckCode()
+    public function getPckCode(): string
     {
         return $this->PckCode;
     }
 
     /**
      * Set PckCode value
-     *
-     * @param string $pckCode
-     *
-     * @return self
      */
-    public function setPckCode($pckCode = null)
+    public function setPckCode(?string $pckCode): self
     {
         // validation for constraint: string
         if (null !== $pckCode && !\is_string($pckCode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($pckCode, true), \gettype($pckCode)), __LINE__);
         }
         $this->PckCode = $pckCode;
+
         return $this;
     }
 }

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for PickupPointDeliveryObject StructType
  */
+#[\AllowDynamicProperties]
 class PickupPointDeliveryObject extends AbstractStructBase
 {
     /**
@@ -14,29 +15,23 @@ class PickupPointDeliveryObject extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\PickupPointObject
      */
-    public $PckPoint;
+    protected ?PickupPointObject $PckPoint = null;
     /**
      * The PlannedDlvrDate
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $PlannedDlvrDate;
+    protected ?string $PlannedDlvrDate = null;
 
     /**
      * Constructor method for PickupPointDeliveryObject
      *
      * @uses PickupPointDeliveryObject::setPckPoint()
      * @uses PickupPointDeliveryObject::setPlannedDlvrDate()
-     *
-     * @param string $plannedDlvrDate
      */
-    public function __construct(PickupPointObject $pckPoint = null, $plannedDlvrDate = null)
+    public function __construct(?PickupPointObject $pckPoint = null, ?string $plannedDlvrDate = null)
     {
         $this
             ->setPckPoint($pckPoint)
@@ -46,49 +41,41 @@ class PickupPointDeliveryObject extends AbstractStructBase
 
     /**
      * Get PckPoint value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\PickupPointObject|null
      */
-    public function getPckPoint()
+    public function getPckPoint(): ?PickupPointObject
     {
         return $this->PckPoint;
     }
 
     /**
      * Set PckPoint value
-     *
-     * @return self
      */
-    public function setPckPoint(PickupPointObject $pckPoint = null)
+    public function setPckPoint(?PickupPointObject $pckPoint = null): self
     {
         $this->PckPoint = $pckPoint;
+
         return $this;
     }
 
     /**
      * Get PlannedDlvrDate value
-     *
-     * @return string|null
      */
-    public function getPlannedDlvrDate()
+    public function getPlannedDlvrDate(): ?string
     {
         return $this->PlannedDlvrDate;
     }
 
     /**
      * Set PlannedDlvrDate value
-     *
-     * @param string $plannedDlvrDate
-     *
-     * @return self
      */
-    public function setPlannedDlvrDate($plannedDlvrDate = null)
+    public function setPlannedDlvrDate(?string $plannedDlvrDate = null): self
     {
         // validation for constraint: string
         if (null !== $plannedDlvrDate && !\is_string($plannedDlvrDate)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($plannedDlvrDate, true), \gettype($plannedDlvrDate)), __LINE__);
         }
         $this->PlannedDlvrDate = $plannedDlvrDate;
+
         return $this;
     }
 }

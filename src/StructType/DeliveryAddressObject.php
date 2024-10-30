@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,97 +7,78 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for DeliveryAddressObject StructType
  */
+#[\AllowDynamicProperties]
 class DeliveryAddressObject extends AbstractStructBase
 {
+    /**
+     * The DlvrEmail
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 0
+     */
+    protected ?string $DlvrEmail = null;
+    /**
+     * The DlvrPhon
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 0
+     */
+    protected ?string $DlvrPhon = null;
+    /**
+     * The DlvrGsm
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 0
+     */
+    protected ?string $DlvrGsm = null;
+    /**
+     * The DlvrDCode
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 0
+     */
+    protected ?string $DlvrDCode = null;
+    /**
+     * The DlvrComments
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 0
+     */
+    protected ?string $DlvrComments = null;
+    /**
+     * The DlvrLng
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 0
+     */
+    protected ?string $DlvrLng = null;
+    /**
+     * The DlvrCurrency
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 0
+     */
+    protected ?string $DlvrCurrency = null;
     /**
      * The DlvrName
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var string
      */
-    public $DlvrName;
+    protected ?string $DlvrName;
     /**
      * The DlvrAddress
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\AddressObject
      */
-    public $DlvrAddress;
-    /**
-     * The DlvrEmail
-     * Meta information extracted from the WSDL
-     * - maxOccurs: 1
-     * - minOccurs: 0
-     *
-     * @var string
-     */
-    public $DlvrEmail;
-    /**
-     * The DlvrPhon
-     * Meta information extracted from the WSDL
-     * - maxOccurs: 1
-     * - minOccurs: 0
-     *
-     * @var string
-     */
-    public $DlvrPhon;
-    /**
-     * The DlvrGsm
-     * Meta information extracted from the WSDL
-     * - maxOccurs: 1
-     * - minOccurs: 0
-     *
-     * @var string
-     */
-    public $DlvrGsm;
-    /**
-     * The DlvrDCode
-     * Meta information extracted from the WSDL
-     * - maxOccurs: 1
-     * - minOccurs: 0
-     *
-     * @var string
-     */
-    public $DlvrDCode;
-    /**
-     * The DlvrComments
-     * Meta information extracted from the WSDL
-     * - maxOccurs: 1
-     * - minOccurs: 0
-     *
-     * @var string
-     */
-    public $DlvrComments;
-    /**
-     * The DlvrLng
-     * Meta information extracted from the WSDL
-     * - maxOccurs: 1
-     * - minOccurs: 0
-     *
-     * @var string
-     */
-    public $DlvrLng;
-    /**
-     * The DlvrCurrency
-     * Meta information extracted from the WSDL
-     * - maxOccurs: 1
-     * - minOccurs: 0
-     *
-     * @var string
-     */
-    public $DlvrCurrency;
+    protected ?AddressObject $DlvrAddress;
 
     /**
      * Constructor method for DeliveryAddressObject
      *
-     * @uses DeliveryAddressObject::setDlvrName()
-     * @uses DeliveryAddressObject::setDlvrAddress()
      * @uses DeliveryAddressObject::setDlvrEmail()
      * @uses DeliveryAddressObject::setDlvrPhon()
      * @uses DeliveryAddressObject::setDlvrGsm()
@@ -105,21 +86,12 @@ class DeliveryAddressObject extends AbstractStructBase
      * @uses DeliveryAddressObject::setDlvrComments()
      * @uses DeliveryAddressObject::setDlvrLng()
      * @uses DeliveryAddressObject::setDlvrCurrency()
-     *
-     * @param string $dlvrName
-     * @param string $dlvrEmail
-     * @param string $dlvrPhon
-     * @param string $dlvrGsm
-     * @param string $dlvrDCode
-     * @param string $dlvrComments
-     * @param string $dlvrLng
-     * @param string $dlvrCurrency
+     * @uses DeliveryAddressObject::setDlvrName()
+     * @uses DeliveryAddressObject::setDlvrAddress()
      */
-    public function __construct($dlvrName = null, AddressObject $dlvrAddress = null, $dlvrEmail = null, $dlvrPhon = null, $dlvrGsm = null, $dlvrDCode = null, $dlvrComments = null, $dlvrLng = null, $dlvrCurrency = null)
+    public function __construct(?string $dlvrEmail = null, ?string $dlvrPhon = null, ?string $dlvrGsm = null, ?string $dlvrDCode = null, ?string $dlvrComments = null, ?string $dlvrLng = null, ?string $dlvrCurrency = null, ?string $dlvrName, ?AddressObject $dlvrAddress)
     {
         $this
-            ->setDlvrName($dlvrName)
-            ->setDlvrAddress($dlvrAddress)
             ->setDlvrEmail($dlvrEmail)
             ->setDlvrPhon($dlvrPhon)
             ->setDlvrGsm($dlvrGsm)
@@ -127,243 +99,202 @@ class DeliveryAddressObject extends AbstractStructBase
             ->setDlvrComments($dlvrComments)
             ->setDlvrLng($dlvrLng)
             ->setDlvrCurrency($dlvrCurrency)
+            ->setDlvrName($dlvrName)
+            ->setDlvrAddress($dlvrAddress)
         ;
     }
 
     /**
-     * Get DlvrName value
-     *
-     * @return string
-     */
-    public function getDlvrName()
-    {
-        return $this->DlvrName;
-    }
-
-    /**
-     * Set DlvrName value
-     *
-     * @param string $dlvrName
-     *
-     * @return self
-     */
-    public function setDlvrName($dlvrName = null)
-    {
-        // validation for constraint: string
-        if (null !== $dlvrName && !\is_string($dlvrName)) {
-            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($dlvrName, true), \gettype($dlvrName)), __LINE__);
-        }
-        $this->DlvrName = $dlvrName;
-        return $this;
-    }
-
-    /**
-     * Get DlvrAddress value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\AddressObject
-     */
-    public function getDlvrAddress()
-    {
-        return $this->DlvrAddress;
-    }
-
-    /**
-     * Set DlvrAddress value
-     *
-     * @return self
-     */
-    public function setDlvrAddress(AddressObject $dlvrAddress = null)
-    {
-        $this->DlvrAddress = $dlvrAddress;
-        return $this;
-    }
-
-    /**
      * Get DlvrEmail value
-     *
-     * @return string|null
      */
-    public function getDlvrEmail()
+    public function getDlvrEmail(): ?string
     {
         return $this->DlvrEmail;
     }
 
     /**
      * Set DlvrEmail value
-     *
-     * @param string $dlvrEmail
-     *
-     * @return self
      */
-    public function setDlvrEmail($dlvrEmail = null)
+    public function setDlvrEmail(?string $dlvrEmail = null): self
     {
         // validation for constraint: string
         if (null !== $dlvrEmail && !\is_string($dlvrEmail)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($dlvrEmail, true), \gettype($dlvrEmail)), __LINE__);
         }
         $this->DlvrEmail = $dlvrEmail;
+
         return $this;
     }
 
     /**
      * Get DlvrPhon value
-     *
-     * @return string|null
      */
-    public function getDlvrPhon()
+    public function getDlvrPhon(): ?string
     {
         return $this->DlvrPhon;
     }
 
     /**
      * Set DlvrPhon value
-     *
-     * @param string $dlvrPhon
-     *
-     * @return self
      */
-    public function setDlvrPhon($dlvrPhon = null)
+    public function setDlvrPhon(?string $dlvrPhon = null): self
     {
         // validation for constraint: string
         if (null !== $dlvrPhon && !\is_string($dlvrPhon)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($dlvrPhon, true), \gettype($dlvrPhon)), __LINE__);
         }
         $this->DlvrPhon = $dlvrPhon;
+
         return $this;
     }
 
     /**
      * Get DlvrGsm value
-     *
-     * @return string|null
      */
-    public function getDlvrGsm()
+    public function getDlvrGsm(): ?string
     {
         return $this->DlvrGsm;
     }
 
     /**
      * Set DlvrGsm value
-     *
-     * @param string $dlvrGsm
-     *
-     * @return self
      */
-    public function setDlvrGsm($dlvrGsm = null)
+    public function setDlvrGsm(?string $dlvrGsm = null): self
     {
         // validation for constraint: string
         if (null !== $dlvrGsm && !\is_string($dlvrGsm)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($dlvrGsm, true), \gettype($dlvrGsm)), __LINE__);
         }
         $this->DlvrGsm = $dlvrGsm;
+
         return $this;
     }
 
     /**
      * Get DlvrDCode value
-     *
-     * @return string|null
      */
-    public function getDlvrDCode()
+    public function getDlvrDCode(): ?string
     {
         return $this->DlvrDCode;
     }
 
     /**
      * Set DlvrDCode value
-     *
-     * @param string $dlvrDCode
-     *
-     * @return self
      */
-    public function setDlvrDCode($dlvrDCode = null)
+    public function setDlvrDCode(?string $dlvrDCode = null): self
     {
         // validation for constraint: string
         if (null !== $dlvrDCode && !\is_string($dlvrDCode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($dlvrDCode, true), \gettype($dlvrDCode)), __LINE__);
         }
         $this->DlvrDCode = $dlvrDCode;
+
         return $this;
     }
 
     /**
      * Get DlvrComments value
-     *
-     * @return string|null
      */
-    public function getDlvrComments()
+    public function getDlvrComments(): ?string
     {
         return $this->DlvrComments;
     }
 
     /**
      * Set DlvrComments value
-     *
-     * @param string $dlvrComments
-     *
-     * @return self
      */
-    public function setDlvrComments($dlvrComments = null)
+    public function setDlvrComments(?string $dlvrComments = null): self
     {
         // validation for constraint: string
         if (null !== $dlvrComments && !\is_string($dlvrComments)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($dlvrComments, true), \gettype($dlvrComments)), __LINE__);
         }
         $this->DlvrComments = $dlvrComments;
+
         return $this;
     }
 
     /**
      * Get DlvrLng value
-     *
-     * @return string|null
      */
-    public function getDlvrLng()
+    public function getDlvrLng(): ?string
     {
         return $this->DlvrLng;
     }
 
     /**
      * Set DlvrLng value
-     *
-     * @param string $dlvrLng
-     *
-     * @return self
      */
-    public function setDlvrLng($dlvrLng = null)
+    public function setDlvrLng(?string $dlvrLng = null): self
     {
         // validation for constraint: string
         if (null !== $dlvrLng && !\is_string($dlvrLng)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($dlvrLng, true), \gettype($dlvrLng)), __LINE__);
         }
         $this->DlvrLng = $dlvrLng;
+
         return $this;
     }
 
     /**
      * Get DlvrCurrency value
-     *
-     * @return string|null
      */
-    public function getDlvrCurrency()
+    public function getDlvrCurrency(): ?string
     {
         return $this->DlvrCurrency;
     }
 
     /**
      * Set DlvrCurrency value
-     *
-     * @param string $dlvrCurrency
-     *
-     * @return self
      */
-    public function setDlvrCurrency($dlvrCurrency = null)
+    public function setDlvrCurrency(?string $dlvrCurrency = null): self
     {
         // validation for constraint: string
         if (null !== $dlvrCurrency && !\is_string($dlvrCurrency)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($dlvrCurrency, true), \gettype($dlvrCurrency)), __LINE__);
         }
         $this->DlvrCurrency = $dlvrCurrency;
+
+        return $this;
+    }
+
+    /**
+     * Get DlvrName value
+     */
+    public function getDlvrName(): string
+    {
+        return $this->DlvrName;
+    }
+
+    /**
+     * Set DlvrName value
+     */
+    public function setDlvrName(?string $dlvrName): self
+    {
+        // validation for constraint: string
+        if (null !== $dlvrName && !\is_string($dlvrName)) {
+            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($dlvrName, true), \gettype($dlvrName)), __LINE__);
+        }
+        $this->DlvrName = $dlvrName;
+
+        return $this;
+    }
+
+    /**
+     * Get DlvrAddress value
+     */
+    public function getDlvrAddress(): AddressObject
+    {
+        return $this->DlvrAddress;
+    }
+
+    /**
+     * Set DlvrAddress value
+     */
+    public function setDlvrAddress(?AddressObject $dlvrAddress): self
+    {
+        $this->DlvrAddress = $dlvrAddress;
+
         return $this;
     }
 }

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for SetContainer StructType
  */
+#[\AllowDynamicProperties]
 class SetContainer extends AbstractStructBase
 {
     /**
@@ -15,17 +16,15 @@ class SetContainer extends AbstractStructBase
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\SetContainerRequest
      */
-    public $SetContainerRequest;
+    protected ?SetContainerRequest $SetContainerRequest;
 
     /**
      * Constructor method for SetContainer
      *
      * @uses SetContainer::setSetContainerRequest()
      */
-    public function __construct(SetContainerRequest $setContainerRequest = null)
+    public function __construct(?SetContainerRequest $setContainerRequest)
     {
         $this
             ->setSetContainerRequest($setContainerRequest)
@@ -34,22 +33,19 @@ class SetContainer extends AbstractStructBase
 
     /**
      * Get SetContainerRequest value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\SetContainerRequest
      */
-    public function getSetContainerRequest()
+    public function getSetContainerRequest(): SetContainerRequest
     {
         return $this->SetContainerRequest;
     }
 
     /**
      * Set SetContainerRequest value
-     *
-     * @return self
      */
-    public function setSetContainerRequest(SetContainerRequest $setContainerRequest = null)
+    public function setSetContainerRequest(?SetContainerRequest $setContainerRequest): self
     {
         $this->SetContainerRequest = $setContainerRequest;
+
         return $this;
     }
 }

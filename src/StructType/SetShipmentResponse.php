@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for SetShipmentResponse StructType
  */
+#[\AllowDynamicProperties]
 class SetShipmentResponse extends AbstractStructBase
 {
     /**
@@ -14,17 +15,15 @@ class SetShipmentResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\SetShipmentReturn
      */
-    public $SetShipmentResult;
+    protected ?SetShipmentReturn $SetShipmentResult = null;
 
     /**
      * Constructor method for SetShipmentResponse
      *
      * @uses SetShipmentResponse::setSetShipmentResult()
      */
-    public function __construct(SetShipmentReturn $setShipmentResult = null)
+    public function __construct(?SetShipmentReturn $setShipmentResult = null)
     {
         $this
             ->setSetShipmentResult($setShipmentResult)
@@ -33,22 +32,19 @@ class SetShipmentResponse extends AbstractStructBase
 
     /**
      * Get SetShipmentResult value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\SetShipmentReturn|null
      */
-    public function getSetShipmentResult()
+    public function getSetShipmentResult(): ?SetShipmentReturn
     {
         return $this->SetShipmentResult;
     }
 
     /**
      * Set SetShipmentResult value
-     *
-     * @return self
      */
-    public function setSetShipmentResult(SetShipmentReturn $setShipmentResult = null)
+    public function setSetShipmentResult(?SetShipmentReturn $setShipmentResult = null): self
     {
         $this->SetShipmentResult = $setShipmentResult;
+
         return $this;
     }
 }

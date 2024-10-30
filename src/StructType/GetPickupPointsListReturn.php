@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetPickupPointsListReturn StructType
  */
+#[\AllowDynamicProperties]
 class GetPickupPointsListReturn extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class GetPickupPointsListReturn extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\ResponseObject
      */
-    public $WSResp;
+    protected ?ResponseObject $WSResp = null;
     /**
      * The PcksList
      * Meta information extracted from the WSDL
@@ -26,7 +25,7 @@ class GetPickupPointsListReturn extends AbstractStructBase
      *
      * @var array<\Scraper\ScraperColisPrive\StructType\PickupPointDeliveryObject>
      */
-    public $PcksList;
+    protected ?array $PcksList = null;
 
     /**
      * Constructor method for GetPickupPointsListReturn
@@ -36,7 +35,7 @@ class GetPickupPointsListReturn extends AbstractStructBase
      *
      * @param array<\Scraper\ScraperColisPrive\StructType\PickupPointDeliveryObject> $pcksList
      */
-    public function __construct(ResponseObject $wSResp = null, array $pcksList = [])
+    public function __construct(?ResponseObject $wSResp = null, ?array $pcksList = null)
     {
         $this
             ->setWSResp($wSResp)
@@ -46,49 +45,50 @@ class GetPickupPointsListReturn extends AbstractStructBase
 
     /**
      * Get WSResp value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\ResponseObject|null
      */
-    public function getWSResp()
+    public function getWSResp(): ?ResponseObject
     {
         return $this->WSResp;
     }
 
     /**
      * Set WSResp value
-     *
-     * @return self
      */
-    public function setWSResp(ResponseObject $wSResp = null)
+    public function setWSResp(?ResponseObject $wSResp = null): self
     {
         $this->WSResp = $wSResp;
+
         return $this;
     }
 
     /**
      * Get PcksList value
      *
-     * @return array<\Scraper\ScraperColisPrive\StructType\PickupPointDeliveryObject>|null
+     * @return array<\Scraper\ScraperColisPrive\StructType\PickupPointDeliveryObject>
      */
-    public function getPcksList()
+    public function getPcksList(): ?array
     {
         return $this->PcksList;
     }
 
     /**
-     * This method is responsible for validating the values passed to the setPcksList method
+     * This method is responsible for validating the value(s) passed to the setPcksList method
      * This method is willingly generated in order to preserve the one-line inline validation within the setPcksList method
+     * This has to validate that each item contained by the array match the itemType constraint
      *
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validatePcksListForArrayConstraintsFromSetPcksList(array $values = [])
+    public static function validatePcksListForArrayConstraintFromSetPcksList(?array $values = []): string
     {
+        if (!\is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
 
         foreach ($values as $getPickupPointsListReturnPcksListItem) {
             // validation for constraint: itemType
-            if (!$getPickupPointsListReturnPcksListItem instanceof \Scraper\ScraperColisPrive\StructType\PickupPointDeliveryObject) {
+            if (!$getPickupPointsListReturnPcksListItem instanceof PickupPointDeliveryObject) {
                 $invalidValues[] = \is_object($getPickupPointsListReturnPcksListItem) ? $getPickupPointsListReturnPcksListItem::class : sprintf('%s(%s)', \gettype($getPickupPointsListReturnPcksListItem), var_export($getPickupPointsListReturnPcksListItem, true));
             }
         }
@@ -97,6 +97,7 @@ class GetPickupPointsListReturn extends AbstractStructBase
             $message = sprintf('The PcksList property can only contain items of type \Scraper\ScraperColisPrive\StructType\PickupPointDeliveryObject, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
         }
         unset($invalidValues);
+
         return $message;
     }
 
@@ -106,16 +107,15 @@ class GetPickupPointsListReturn extends AbstractStructBase
      * @param array<\Scraper\ScraperColisPrive\StructType\PickupPointDeliveryObject> $pcksList
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setPcksList(array $pcksList = [])
+    public function setPcksList(?array $pcksList = null): self
     {
         // validation for constraint: array
-        if ('' !== ($pcksListArrayErrorMessage = self::validatePcksListForArrayConstraintsFromSetPcksList($pcksList))) {
+        if ('' !== ($pcksListArrayErrorMessage = self::validatePcksListForArrayConstraintFromSetPcksList($pcksList))) {
             throw new \InvalidArgumentException($pcksListArrayErrorMessage, __LINE__);
         }
         $this->PcksList = $pcksList;
+
         return $this;
     }
 
@@ -123,16 +123,15 @@ class GetPickupPointsListReturn extends AbstractStructBase
      * Add item to PcksList value
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function addToPcksList(PickupPointDeliveryObject $item)
+    public function addToPcksList(PickupPointDeliveryObject $item): self
     {
         // validation for constraint: itemType
-        if (!$item instanceof \Scraper\ScraperColisPrive\StructType\PickupPointDeliveryObject) {
+        if (!$item instanceof PickupPointDeliveryObject) {
             throw new \InvalidArgumentException(sprintf('The PcksList property can only contain items of type \Scraper\ScraperColisPrive\StructType\PickupPointDeliveryObject, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
         }
         $this->PcksList[] = $item;
+
         return $this;
     }
 }

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetPickupPointResponse StructType
  */
+#[\AllowDynamicProperties]
 class GetPickupPointResponse extends AbstractStructBase
 {
     /**
@@ -14,17 +15,15 @@ class GetPickupPointResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\GetPickupPointReturn
      */
-    public $GetPickupPointResult;
+    protected ?GetPickupPointReturn $GetPickupPointResult = null;
 
     /**
      * Constructor method for GetPickupPointResponse
      *
      * @uses GetPickupPointResponse::setGetPickupPointResult()
      */
-    public function __construct(GetPickupPointReturn $getPickupPointResult = null)
+    public function __construct(?GetPickupPointReturn $getPickupPointResult = null)
     {
         $this
             ->setGetPickupPointResult($getPickupPointResult)
@@ -33,22 +32,19 @@ class GetPickupPointResponse extends AbstractStructBase
 
     /**
      * Get GetPickupPointResult value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\GetPickupPointReturn|null
      */
-    public function getGetPickupPointResult()
+    public function getGetPickupPointResult(): ?GetPickupPointReturn
     {
         return $this->GetPickupPointResult;
     }
 
     /**
      * Set GetPickupPointResult value
-     *
-     * @return self
      */
-    public function setGetPickupPointResult(GetPickupPointReturn $getPickupPointResult = null)
+    public function setGetPickupPointResult(?GetPickupPointReturn $getPickupPointResult = null): self
     {
         $this->GetPickupPointResult = $getPickupPointResult;
+
         return $this;
     }
 }

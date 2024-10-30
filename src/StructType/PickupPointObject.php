@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for PickupPointObject StructType
  */
+#[\AllowDynamicProperties]
 class PickupPointObject extends AbstractStructBase
 {
     /**
@@ -14,109 +15,85 @@ class PickupPointObject extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $PckCode;
+    protected ?string $PckCode = null;
     /**
      * The PckName
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $PckName;
+    protected ?string $PckName = null;
     /**
      * The PckAdd
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\AddressObject
      */
-    public $PckAdd;
+    protected ?AddressObject $PckAdd = null;
     /**
      * The PckPict
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $PckPict;
+    protected ?string $PckPict = null;
     /**
      * The PckLocHints
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $PckLocHints;
+    protected ?string $PckLocHints = null;
     /**
      * The PckMonHrs
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $PckMonHrs;
+    protected ?string $PckMonHrs = null;
     /**
      * The PckTueHrs
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $PckTueHrs;
+    protected ?string $PckTueHrs = null;
     /**
      * The PckWedHrs
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $PckWedHrs;
+    protected ?string $PckWedHrs = null;
     /**
      * The PckThuHrs
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $PckThuHrs;
+    protected ?string $PckThuHrs = null;
     /**
      * The PckFriHrs
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $PckFriHrs;
+    protected ?string $PckFriHrs = null;
     /**
      * The PckSatHrs
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $PckSatHrs;
+    protected ?string $PckSatHrs = null;
     /**
      * The PckSunHrs
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $PckSunHrs;
+    protected ?string $PckSunHrs = null;
 
     /**
      * Constructor method for PickupPointObject
@@ -133,20 +110,8 @@ class PickupPointObject extends AbstractStructBase
      * @uses PickupPointObject::setPckFriHrs()
      * @uses PickupPointObject::setPckSatHrs()
      * @uses PickupPointObject::setPckSunHrs()
-     *
-     * @param string $pckCode
-     * @param string $pckName
-     * @param string $pckPict
-     * @param string $pckLocHints
-     * @param string $pckMonHrs
-     * @param string $pckTueHrs
-     * @param string $pckWedHrs
-     * @param string $pckThuHrs
-     * @param string $pckFriHrs
-     * @param string $pckSatHrs
-     * @param string $pckSunHrs
      */
-    public function __construct($pckCode = null, $pckName = null, AddressObject $pckAdd = null, $pckPict = null, $pckLocHints = null, $pckMonHrs = null, $pckTueHrs = null, $pckWedHrs = null, $pckThuHrs = null, $pckFriHrs = null, $pckSatHrs = null, $pckSunHrs = null)
+    public function __construct(?string $pckCode = null, ?string $pckName = null, ?AddressObject $pckAdd = null, ?string $pckPict = null, ?string $pckLocHints = null, ?string $pckMonHrs = null, ?string $pckTueHrs = null, ?string $pckWedHrs = null, ?string $pckThuHrs = null, ?string $pckFriHrs = null, ?string $pckSatHrs = null, ?string $pckSunHrs = null)
     {
         $this
             ->setPckCode($pckCode)
@@ -166,319 +131,261 @@ class PickupPointObject extends AbstractStructBase
 
     /**
      * Get PckCode value
-     *
-     * @return string|null
      */
-    public function getPckCode()
+    public function getPckCode(): ?string
     {
         return $this->PckCode;
     }
 
     /**
      * Set PckCode value
-     *
-     * @param string $pckCode
-     *
-     * @return self
      */
-    public function setPckCode($pckCode = null)
+    public function setPckCode(?string $pckCode = null): self
     {
         // validation for constraint: string
         if (null !== $pckCode && !\is_string($pckCode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($pckCode, true), \gettype($pckCode)), __LINE__);
         }
         $this->PckCode = $pckCode;
+
         return $this;
     }
 
     /**
      * Get PckName value
-     *
-     * @return string|null
      */
-    public function getPckName()
+    public function getPckName(): ?string
     {
         return $this->PckName;
     }
 
     /**
      * Set PckName value
-     *
-     * @param string $pckName
-     *
-     * @return self
      */
-    public function setPckName($pckName = null)
+    public function setPckName(?string $pckName = null): self
     {
         // validation for constraint: string
         if (null !== $pckName && !\is_string($pckName)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($pckName, true), \gettype($pckName)), __LINE__);
         }
         $this->PckName = $pckName;
+
         return $this;
     }
 
     /**
      * Get PckAdd value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\AddressObject|null
      */
-    public function getPckAdd()
+    public function getPckAdd(): ?AddressObject
     {
         return $this->PckAdd;
     }
 
     /**
      * Set PckAdd value
-     *
-     * @return self
      */
-    public function setPckAdd(AddressObject $pckAdd = null)
+    public function setPckAdd(?AddressObject $pckAdd = null): self
     {
         $this->PckAdd = $pckAdd;
+
         return $this;
     }
 
     /**
      * Get PckPict value
-     *
-     * @return string|null
      */
-    public function getPckPict()
+    public function getPckPict(): ?string
     {
         return $this->PckPict;
     }
 
     /**
      * Set PckPict value
-     *
-     * @param string $pckPict
-     *
-     * @return self
      */
-    public function setPckPict($pckPict = null)
+    public function setPckPict(?string $pckPict = null): self
     {
         // validation for constraint: string
         if (null !== $pckPict && !\is_string($pckPict)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($pckPict, true), \gettype($pckPict)), __LINE__);
         }
         $this->PckPict = $pckPict;
+
         return $this;
     }
 
     /**
      * Get PckLocHints value
-     *
-     * @return string|null
      */
-    public function getPckLocHints()
+    public function getPckLocHints(): ?string
     {
         return $this->PckLocHints;
     }
 
     /**
      * Set PckLocHints value
-     *
-     * @param string $pckLocHints
-     *
-     * @return self
      */
-    public function setPckLocHints($pckLocHints = null)
+    public function setPckLocHints(?string $pckLocHints = null): self
     {
         // validation for constraint: string
         if (null !== $pckLocHints && !\is_string($pckLocHints)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($pckLocHints, true), \gettype($pckLocHints)), __LINE__);
         }
         $this->PckLocHints = $pckLocHints;
+
         return $this;
     }
 
     /**
      * Get PckMonHrs value
-     *
-     * @return string|null
      */
-    public function getPckMonHrs()
+    public function getPckMonHrs(): ?string
     {
         return $this->PckMonHrs;
     }
 
     /**
      * Set PckMonHrs value
-     *
-     * @param string $pckMonHrs
-     *
-     * @return self
      */
-    public function setPckMonHrs($pckMonHrs = null)
+    public function setPckMonHrs(?string $pckMonHrs = null): self
     {
         // validation for constraint: string
         if (null !== $pckMonHrs && !\is_string($pckMonHrs)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($pckMonHrs, true), \gettype($pckMonHrs)), __LINE__);
         }
         $this->PckMonHrs = $pckMonHrs;
+
         return $this;
     }
 
     /**
      * Get PckTueHrs value
-     *
-     * @return string|null
      */
-    public function getPckTueHrs()
+    public function getPckTueHrs(): ?string
     {
         return $this->PckTueHrs;
     }
 
     /**
      * Set PckTueHrs value
-     *
-     * @param string $pckTueHrs
-     *
-     * @return self
      */
-    public function setPckTueHrs($pckTueHrs = null)
+    public function setPckTueHrs(?string $pckTueHrs = null): self
     {
         // validation for constraint: string
         if (null !== $pckTueHrs && !\is_string($pckTueHrs)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($pckTueHrs, true), \gettype($pckTueHrs)), __LINE__);
         }
         $this->PckTueHrs = $pckTueHrs;
+
         return $this;
     }
 
     /**
      * Get PckWedHrs value
-     *
-     * @return string|null
      */
-    public function getPckWedHrs()
+    public function getPckWedHrs(): ?string
     {
         return $this->PckWedHrs;
     }
 
     /**
      * Set PckWedHrs value
-     *
-     * @param string $pckWedHrs
-     *
-     * @return self
      */
-    public function setPckWedHrs($pckWedHrs = null)
+    public function setPckWedHrs(?string $pckWedHrs = null): self
     {
         // validation for constraint: string
         if (null !== $pckWedHrs && !\is_string($pckWedHrs)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($pckWedHrs, true), \gettype($pckWedHrs)), __LINE__);
         }
         $this->PckWedHrs = $pckWedHrs;
+
         return $this;
     }
 
     /**
      * Get PckThuHrs value
-     *
-     * @return string|null
      */
-    public function getPckThuHrs()
+    public function getPckThuHrs(): ?string
     {
         return $this->PckThuHrs;
     }
 
     /**
      * Set PckThuHrs value
-     *
-     * @param string $pckThuHrs
-     *
-     * @return self
      */
-    public function setPckThuHrs($pckThuHrs = null)
+    public function setPckThuHrs(?string $pckThuHrs = null): self
     {
         // validation for constraint: string
         if (null !== $pckThuHrs && !\is_string($pckThuHrs)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($pckThuHrs, true), \gettype($pckThuHrs)), __LINE__);
         }
         $this->PckThuHrs = $pckThuHrs;
+
         return $this;
     }
 
     /**
      * Get PckFriHrs value
-     *
-     * @return string|null
      */
-    public function getPckFriHrs()
+    public function getPckFriHrs(): ?string
     {
         return $this->PckFriHrs;
     }
 
     /**
      * Set PckFriHrs value
-     *
-     * @param string $pckFriHrs
-     *
-     * @return self
      */
-    public function setPckFriHrs($pckFriHrs = null)
+    public function setPckFriHrs(?string $pckFriHrs = null): self
     {
         // validation for constraint: string
         if (null !== $pckFriHrs && !\is_string($pckFriHrs)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($pckFriHrs, true), \gettype($pckFriHrs)), __LINE__);
         }
         $this->PckFriHrs = $pckFriHrs;
+
         return $this;
     }
 
     /**
      * Get PckSatHrs value
-     *
-     * @return string|null
      */
-    public function getPckSatHrs()
+    public function getPckSatHrs(): ?string
     {
         return $this->PckSatHrs;
     }
 
     /**
      * Set PckSatHrs value
-     *
-     * @param string $pckSatHrs
-     *
-     * @return self
      */
-    public function setPckSatHrs($pckSatHrs = null)
+    public function setPckSatHrs(?string $pckSatHrs = null): self
     {
         // validation for constraint: string
         if (null !== $pckSatHrs && !\is_string($pckSatHrs)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($pckSatHrs, true), \gettype($pckSatHrs)), __LINE__);
         }
         $this->PckSatHrs = $pckSatHrs;
+
         return $this;
     }
 
     /**
      * Get PckSunHrs value
-     *
-     * @return string|null
      */
-    public function getPckSunHrs()
+    public function getPckSunHrs(): ?string
     {
         return $this->PckSunHrs;
     }
 
     /**
      * Set PckSunHrs value
-     *
-     * @param string $pckSunHrs
-     *
-     * @return self
      */
-    public function setPckSunHrs($pckSunHrs = null)
+    public function setPckSunHrs(?string $pckSunHrs = null): self
     {
         // validation for constraint: string
         if (null !== $pckSunHrs && !\is_string($pckSunHrs)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($pckSunHrs, true), \gettype($pckSunHrs)), __LINE__);
         }
         $this->PckSunHrs = $pckSunHrs;
+
         return $this;
     }
 }

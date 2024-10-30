@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\ServiceType;
 
@@ -15,16 +15,10 @@ class Test extends AbstractSoapClientBase
      * Sets the AuthenticationHeader SoapHeader param
      *
      * @uses \AbstractSoapClientBase::setSoapHeader()
-     *
-     * @param string $nameSpace
-     * @param bool   $mustUnderstand
-     * @param string $actor
-     *
-     * @return bool
      */
-    public function setSoapHeaderAuthenticationHeader(\Scraper\ScraperColisPrive\StructType\AuthenticationHeader $authenticationHeader, $nameSpace = 'http://colisprive.com/externe/1.0/', $mustUnderstand = false, $actor = null)
+    public function setSoapHeaderAuthenticationHeader(\Scraper\ScraperColisPrive\StructType\AuthenticationHeader $authenticationHeader, string $namespace = 'http://colisprive.com/externe/1.0/', bool $mustUnderstand = false, ?string $actor = null): self
     {
-        return $this->setSoapHeader($nameSpace, 'AuthenticationHeader', $authenticationHeader, $mustUnderstand, $actor);
+        return $this->setSoapHeader($namespace, 'AuthenticationHeader', $authenticationHeader, $mustUnderstand, $actor);
     }
 
     /**
@@ -38,7 +32,6 @@ class Test extends AbstractSoapClientBase
      *
      * @uses \AbstractSoapClientBase::getSoapClient()
      * @uses \AbstractSoapClientBase::setResult()
-     * @uses \AbstractSoapClientBase::getResult()
      * @uses \AbstractSoapClientBase::saveLastError()
      *
      * @return \Scraper\ScraperColisPrive\StructType\TestServiceResponse|bool
@@ -46,10 +39,14 @@ class Test extends AbstractSoapClientBase
     public function TestService(\Scraper\ScraperColisPrive\StructType\TestService $parameters)
     {
         try {
-            $this->setResult($this->getSoapClient()->TestService($parameters));
-            return $this->getResult();
+            $this->setResult($resultTestService = $this->getSoapClient()->__soapCall('TestService', [
+                $parameters,
+            ], [], [], $this->outputHeaders));
+
+            return $resultTestService;
         } catch (\SoapFault $soapFault) {
             $this->saveLastError(__METHOD__, $soapFault);
+
             return false;
         }
     }

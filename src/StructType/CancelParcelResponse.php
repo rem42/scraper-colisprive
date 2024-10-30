@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for CancelParcelResponse StructType
  */
+#[\AllowDynamicProperties]
 class CancelParcelResponse extends AbstractStructBase
 {
     /**
@@ -14,17 +15,15 @@ class CancelParcelResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\CancelParcelReturn
      */
-    public $CancelParcelResult;
+    protected ?CancelParcelReturn $CancelParcelResult = null;
 
     /**
      * Constructor method for CancelParcelResponse
      *
      * @uses CancelParcelResponse::setCancelParcelResult()
      */
-    public function __construct(CancelParcelReturn $cancelParcelResult = null)
+    public function __construct(?CancelParcelReturn $cancelParcelResult = null)
     {
         $this
             ->setCancelParcelResult($cancelParcelResult)
@@ -33,22 +32,19 @@ class CancelParcelResponse extends AbstractStructBase
 
     /**
      * Get CancelParcelResult value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\CancelParcelReturn|null
      */
-    public function getCancelParcelResult()
+    public function getCancelParcelResult(): ?CancelParcelReturn
     {
         return $this->CancelParcelResult;
     }
 
     /**
      * Set CancelParcelResult value
-     *
-     * @return self
      */
-    public function setCancelParcelResult(CancelParcelReturn $cancelParcelResult = null)
+    public function setCancelParcelResult(?CancelParcelReturn $cancelParcelResult = null): self
     {
         $this->CancelParcelResult = $cancelParcelResult;
+
         return $this;
     }
 }

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetPickupPointReturn StructType
  */
+#[\AllowDynamicProperties]
 class GetPickupPointReturn extends AbstractStructBase
 {
     /**
@@ -14,19 +15,15 @@ class GetPickupPointReturn extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\ResponseObject
      */
-    public $WSResp;
+    protected ?ResponseObject $WSResp = null;
     /**
      * The PckPoint
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\PickupPointObject
      */
-    public $PckPoint;
+    protected ?PickupPointObject $PckPoint = null;
 
     /**
      * Constructor method for GetPickupPointReturn
@@ -34,7 +31,7 @@ class GetPickupPointReturn extends AbstractStructBase
      * @uses GetPickupPointReturn::setWSResp()
      * @uses GetPickupPointReturn::setPckPoint()
      */
-    public function __construct(ResponseObject $wSResp = null, PickupPointObject $pckPoint = null)
+    public function __construct(?ResponseObject $wSResp = null, ?PickupPointObject $pckPoint = null)
     {
         $this
             ->setWSResp($wSResp)
@@ -44,43 +41,37 @@ class GetPickupPointReturn extends AbstractStructBase
 
     /**
      * Get WSResp value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\ResponseObject|null
      */
-    public function getWSResp()
+    public function getWSResp(): ?ResponseObject
     {
         return $this->WSResp;
     }
 
     /**
      * Set WSResp value
-     *
-     * @return self
      */
-    public function setWSResp(ResponseObject $wSResp = null)
+    public function setWSResp(?ResponseObject $wSResp = null): self
     {
         $this->WSResp = $wSResp;
+
         return $this;
     }
 
     /**
      * Get PckPoint value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\PickupPointObject|null
      */
-    public function getPckPoint()
+    public function getPckPoint(): ?PickupPointObject
     {
         return $this->PckPoint;
     }
 
     /**
      * Set PckPoint value
-     *
-     * @return self
      */
-    public function setPckPoint(PickupPointObject $pckPoint = null)
+    public function setPckPoint(?PickupPointObject $pckPoint = null): self
     {
         $this->PckPoint = $pckPoint;
+
         return $this;
     }
 }

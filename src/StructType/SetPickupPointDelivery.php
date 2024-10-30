@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for SetPickupPointDelivery StructType
  */
+#[\AllowDynamicProperties]
 class SetPickupPointDelivery extends AbstractStructBase
 {
     /**
@@ -15,17 +16,15 @@ class SetPickupPointDelivery extends AbstractStructBase
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\SetPickupPointDeliveryRequest
      */
-    public $SetPickupPointDeliveryRequest;
+    protected ?SetPickupPointDeliveryRequest $SetPickupPointDeliveryRequest;
 
     /**
      * Constructor method for SetPickupPointDelivery
      *
      * @uses SetPickupPointDelivery::setSetPickupPointDeliveryRequest()
      */
-    public function __construct(SetPickupPointDeliveryRequest $setPickupPointDeliveryRequest = null)
+    public function __construct(?SetPickupPointDeliveryRequest $setPickupPointDeliveryRequest)
     {
         $this
             ->setSetPickupPointDeliveryRequest($setPickupPointDeliveryRequest)
@@ -34,22 +33,19 @@ class SetPickupPointDelivery extends AbstractStructBase
 
     /**
      * Get SetPickupPointDeliveryRequest value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\SetPickupPointDeliveryRequest
      */
-    public function getSetPickupPointDeliveryRequest()
+    public function getSetPickupPointDeliveryRequest(): SetPickupPointDeliveryRequest
     {
         return $this->SetPickupPointDeliveryRequest;
     }
 
     /**
      * Set SetPickupPointDeliveryRequest value
-     *
-     * @return self
      */
-    public function setSetPickupPointDeliveryRequest(SetPickupPointDeliveryRequest $setPickupPointDeliveryRequest = null)
+    public function setSetPickupPointDeliveryRequest(?SetPickupPointDeliveryRequest $setPickupPointDeliveryRequest): self
     {
         $this->SetPickupPointDeliveryRequest = $setPickupPointDeliveryRequest;
+
         return $this;
     }
 }

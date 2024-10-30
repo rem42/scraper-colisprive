@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for CityObject StructType
  */
+#[\AllowDynamicProperties]
 class CityObject extends AbstractStructBase
 {
     /**
@@ -14,30 +15,23 @@ class CityObject extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $ZC;
+    protected ?string $ZC = null;
     /**
      * The CityName
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $CityName;
+    protected ?string $CityName = null;
 
     /**
      * Constructor method for CityObject
      *
      * @uses CityObject::setZC()
      * @uses CityObject::setCityName()
-     *
-     * @param string $zC
-     * @param string $cityName
      */
-    public function __construct($zC = null, $cityName = null)
+    public function __construct(?string $zC = null, ?string $cityName = null)
     {
         $this
             ->setZC($zC)
@@ -47,55 +41,45 @@ class CityObject extends AbstractStructBase
 
     /**
      * Get ZC value
-     *
-     * @return string|null
      */
-    public function getZC()
+    public function getZC(): ?string
     {
         return $this->ZC;
     }
 
     /**
      * Set ZC value
-     *
-     * @param string $zC
-     *
-     * @return self
      */
-    public function setZC($zC = null)
+    public function setZC(?string $zC = null): self
     {
         // validation for constraint: string
         if (null !== $zC && !\is_string($zC)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($zC, true), \gettype($zC)), __LINE__);
         }
         $this->ZC = $zC;
+
         return $this;
     }
 
     /**
      * Get CityName value
-     *
-     * @return string|null
      */
-    public function getCityName()
+    public function getCityName(): ?string
     {
         return $this->CityName;
     }
 
     /**
      * Set CityName value
-     *
-     * @param string $cityName
-     *
-     * @return self
      */
-    public function setCityName($cityName = null)
+    public function setCityName(?string $cityName = null): self
     {
         // validation for constraint: string
         if (null !== $cityName && !\is_string($cityName)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($cityName, true), \gettype($cityName)), __LINE__);
         }
         $this->CityName = $cityName;
+
         return $this;
     }
 }

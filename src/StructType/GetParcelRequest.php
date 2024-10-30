@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetParcelRequest StructType
  */
+#[\AllowDynamicProperties]
 class GetParcelRequest extends AbstractStructBase
 {
     /**
@@ -15,30 +16,24 @@ class GetParcelRequest extends AbstractStructBase
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\IdentificationObject
      */
-    public $SecurityID;
+    protected ?IdentificationObject $SecurityID;
     /**
      * The CPPclCode
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var string
      */
-    public $CPPclCode;
+    protected ?string $CPPclCode;
     /**
      * The CsgZipCode
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var string
      */
-    public $CsgZipCode;
+    protected ?string $CsgZipCode;
 
     /**
      * Constructor method for GetParcelRequest
@@ -46,11 +41,8 @@ class GetParcelRequest extends AbstractStructBase
      * @uses GetParcelRequest::setSecurityID()
      * @uses GetParcelRequest::setCPPclCode()
      * @uses GetParcelRequest::setCsgZipCode()
-     *
-     * @param string $cPPclCode
-     * @param string $csgZipCode
      */
-    public function __construct(IdentificationObject $securityID = null, $cPPclCode = null, $csgZipCode = null)
+    public function __construct(?IdentificationObject $securityID, ?string $cPPclCode, ?string $csgZipCode)
     {
         $this
             ->setSecurityID($securityID)
@@ -61,76 +53,63 @@ class GetParcelRequest extends AbstractStructBase
 
     /**
      * Get SecurityID value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\IdentificationObject
      */
-    public function getSecurityID()
+    public function getSecurityID(): IdentificationObject
     {
         return $this->SecurityID;
     }
 
     /**
      * Set SecurityID value
-     *
-     * @return self
      */
-    public function setSecurityID(IdentificationObject $securityID = null)
+    public function setSecurityID(?IdentificationObject $securityID): self
     {
         $this->SecurityID = $securityID;
+
         return $this;
     }
 
     /**
      * Get CPPclCode value
-     *
-     * @return string
      */
-    public function getCPPclCode()
+    public function getCPPclCode(): string
     {
         return $this->CPPclCode;
     }
 
     /**
      * Set CPPclCode value
-     *
-     * @param string $cPPclCode
-     *
-     * @return self
      */
-    public function setCPPclCode($cPPclCode = null)
+    public function setCPPclCode(?string $cPPclCode): self
     {
         // validation for constraint: string
         if (null !== $cPPclCode && !\is_string($cPPclCode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($cPPclCode, true), \gettype($cPPclCode)), __LINE__);
         }
         $this->CPPclCode = $cPPclCode;
+
         return $this;
     }
 
     /**
      * Get CsgZipCode value
-     *
-     * @return string
      */
-    public function getCsgZipCode()
+    public function getCsgZipCode(): string
     {
         return $this->CsgZipCode;
     }
 
     /**
      * Set CsgZipCode value
-     *
-     * @param string $csgZipCode
-     *
-     * @return self
      */
-    public function setCsgZipCode($csgZipCode = null)
+    public function setCsgZipCode(?string $csgZipCode): self
     {
         // validation for constraint: string
         if (null !== $csgZipCode && !\is_string($csgZipCode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($csgZipCode, true), \gettype($csgZipCode)), __LINE__);
         }
         $this->CsgZipCode = $csgZipCode;
+
         return $this;
     }
 }

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetDeliveryCalendarReturn StructType
  */
+#[\AllowDynamicProperties]
 class GetDeliveryCalendarReturn extends AbstractStructBase
 {
     /**
@@ -14,10 +15,8 @@ class GetDeliveryCalendarReturn extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\ResponseObject
      */
-    public $WSResp;
+    protected ?ResponseObject $WSResp = null;
     /**
      * The DlvrCalendar
      * Meta information extracted from the WSDL
@@ -26,7 +25,7 @@ class GetDeliveryCalendarReturn extends AbstractStructBase
      *
      * @var array<\Scraper\ScraperColisPrive\StructType\DeliveryDateObject>
      */
-    public $DlvrCalendar;
+    protected ?array $DlvrCalendar = null;
 
     /**
      * Constructor method for GetDeliveryCalendarReturn
@@ -36,7 +35,7 @@ class GetDeliveryCalendarReturn extends AbstractStructBase
      *
      * @param array<\Scraper\ScraperColisPrive\StructType\DeliveryDateObject> $dlvrCalendar
      */
-    public function __construct(ResponseObject $wSResp = null, array $dlvrCalendar = [])
+    public function __construct(?ResponseObject $wSResp = null, ?array $dlvrCalendar = null)
     {
         $this
             ->setWSResp($wSResp)
@@ -46,49 +45,50 @@ class GetDeliveryCalendarReturn extends AbstractStructBase
 
     /**
      * Get WSResp value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\ResponseObject|null
      */
-    public function getWSResp()
+    public function getWSResp(): ?ResponseObject
     {
         return $this->WSResp;
     }
 
     /**
      * Set WSResp value
-     *
-     * @return self
      */
-    public function setWSResp(ResponseObject $wSResp = null)
+    public function setWSResp(?ResponseObject $wSResp = null): self
     {
         $this->WSResp = $wSResp;
+
         return $this;
     }
 
     /**
      * Get DlvrCalendar value
      *
-     * @return array<\Scraper\ScraperColisPrive\StructType\DeliveryDateObject>|null
+     * @return array<\Scraper\ScraperColisPrive\StructType\DeliveryDateObject>
      */
-    public function getDlvrCalendar()
+    public function getDlvrCalendar(): ?array
     {
         return $this->DlvrCalendar;
     }
 
     /**
-     * This method is responsible for validating the values passed to the setDlvrCalendar method
+     * This method is responsible for validating the value(s) passed to the setDlvrCalendar method
      * This method is willingly generated in order to preserve the one-line inline validation within the setDlvrCalendar method
+     * This has to validate that each item contained by the array match the itemType constraint
      *
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validateDlvrCalendarForArrayConstraintsFromSetDlvrCalendar(array $values = [])
+    public static function validateDlvrCalendarForArrayConstraintFromSetDlvrCalendar(?array $values = []): string
     {
+        if (!\is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
 
         foreach ($values as $getDeliveryCalendarReturnDlvrCalendarItem) {
             // validation for constraint: itemType
-            if (!$getDeliveryCalendarReturnDlvrCalendarItem instanceof \Scraper\ScraperColisPrive\StructType\DeliveryDateObject) {
+            if (!$getDeliveryCalendarReturnDlvrCalendarItem instanceof DeliveryDateObject) {
                 $invalidValues[] = \is_object($getDeliveryCalendarReturnDlvrCalendarItem) ? $getDeliveryCalendarReturnDlvrCalendarItem::class : sprintf('%s(%s)', \gettype($getDeliveryCalendarReturnDlvrCalendarItem), var_export($getDeliveryCalendarReturnDlvrCalendarItem, true));
             }
         }
@@ -97,6 +97,7 @@ class GetDeliveryCalendarReturn extends AbstractStructBase
             $message = sprintf('The DlvrCalendar property can only contain items of type \Scraper\ScraperColisPrive\StructType\DeliveryDateObject, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
         }
         unset($invalidValues);
+
         return $message;
     }
 
@@ -106,16 +107,15 @@ class GetDeliveryCalendarReturn extends AbstractStructBase
      * @param array<\Scraper\ScraperColisPrive\StructType\DeliveryDateObject> $dlvrCalendar
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setDlvrCalendar(array $dlvrCalendar = [])
+    public function setDlvrCalendar(?array $dlvrCalendar = null): self
     {
         // validation for constraint: array
-        if ('' !== ($dlvrCalendarArrayErrorMessage = self::validateDlvrCalendarForArrayConstraintsFromSetDlvrCalendar($dlvrCalendar))) {
+        if ('' !== ($dlvrCalendarArrayErrorMessage = self::validateDlvrCalendarForArrayConstraintFromSetDlvrCalendar($dlvrCalendar))) {
             throw new \InvalidArgumentException($dlvrCalendarArrayErrorMessage, __LINE__);
         }
         $this->DlvrCalendar = $dlvrCalendar;
+
         return $this;
     }
 
@@ -123,16 +123,15 @@ class GetDeliveryCalendarReturn extends AbstractStructBase
      * Add item to DlvrCalendar value
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function addToDlvrCalendar(DeliveryDateObject $item)
+    public function addToDlvrCalendar(DeliveryDateObject $item): self
     {
         // validation for constraint: itemType
-        if (!$item instanceof \Scraper\ScraperColisPrive\StructType\DeliveryDateObject) {
+        if (!$item instanceof DeliveryDateObject) {
             throw new \InvalidArgumentException(sprintf('The DlvrCalendar property can only contain items of type \Scraper\ScraperColisPrive\StructType\DeliveryDateObject, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
         }
         $this->DlvrCalendar[] = $item;
+
         return $this;
     }
 }

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for SetParcel StructType
  */
+#[\AllowDynamicProperties]
 class SetParcel extends AbstractStructBase
 {
     /**
@@ -15,17 +16,15 @@ class SetParcel extends AbstractStructBase
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\SetParcelRequest
      */
-    public $SetParcelRequest;
+    protected ?SetParcelRequest $SetParcelRequest;
 
     /**
      * Constructor method for SetParcel
      *
      * @uses SetParcel::setSetParcelRequest()
      */
-    public function __construct(SetParcelRequest $setParcelRequest = null)
+    public function __construct(?SetParcelRequest $setParcelRequest)
     {
         $this
             ->setSetParcelRequest($setParcelRequest)
@@ -34,22 +33,19 @@ class SetParcel extends AbstractStructBase
 
     /**
      * Get SetParcelRequest value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\SetParcelRequest
      */
-    public function getSetParcelRequest()
+    public function getSetParcelRequest(): SetParcelRequest
     {
         return $this->SetParcelRequest;
     }
 
     /**
      * Set SetParcelRequest value
-     *
-     * @return self
      */
-    public function setSetParcelRequest(SetParcelRequest $setParcelRequest = null)
+    public function setSetParcelRequest(?SetParcelRequest $setParcelRequest): self
     {
         $this->SetParcelRequest = $setParcelRequest;
+
         return $this;
     }
 }

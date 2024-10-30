@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for IdentificationObject StructType
  */
+#[\AllowDynamicProperties]
 class IdentificationObject extends AbstractStructBase
 {
     /**
@@ -15,31 +16,24 @@ class IdentificationObject extends AbstractStructBase
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var string
      */
-    public $CPCustoID;
+    protected ?string $CPCustoID;
     /**
      * The AccountID
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var string
      */
-    public $AccountID;
+    protected ?string $AccountID;
 
     /**
      * Constructor method for IdentificationObject
      *
      * @uses IdentificationObject::setCPCustoID()
      * @uses IdentificationObject::setAccountID()
-     *
-     * @param string $cPCustoID
-     * @param string $accountID
      */
-    public function __construct($cPCustoID = null, $accountID = null)
+    public function __construct(?string $cPCustoID, ?string $accountID)
     {
         $this
             ->setCPCustoID($cPCustoID)
@@ -49,55 +43,45 @@ class IdentificationObject extends AbstractStructBase
 
     /**
      * Get CPCustoID value
-     *
-     * @return string
      */
-    public function getCPCustoID()
+    public function getCPCustoID(): string
     {
         return $this->CPCustoID;
     }
 
     /**
      * Set CPCustoID value
-     *
-     * @param string $cPCustoID
-     *
-     * @return self
      */
-    public function setCPCustoID($cPCustoID = null)
+    public function setCPCustoID(?string $cPCustoID): self
     {
         // validation for constraint: string
         if (null !== $cPCustoID && !\is_string($cPCustoID)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($cPCustoID, true), \gettype($cPCustoID)), __LINE__);
         }
         $this->CPCustoID = $cPCustoID;
+
         return $this;
     }
 
     /**
      * Get AccountID value
-     *
-     * @return string
      */
-    public function getAccountID()
+    public function getAccountID(): string
     {
         return $this->AccountID;
     }
 
     /**
      * Set AccountID value
-     *
-     * @param string $accountID
-     *
-     * @return self
      */
-    public function setAccountID($accountID = null)
+    public function setAccountID(?string $accountID): self
     {
         // validation for constraint: string
         if (null !== $accountID && !\is_string($accountID)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($accountID, true), \gettype($accountID)), __LINE__);
         }
         $this->AccountID = $accountID;
+
         return $this;
     }
 }

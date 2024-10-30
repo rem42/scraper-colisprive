@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for SetContainerResponse StructType
  */
+#[\AllowDynamicProperties]
 class SetContainerResponse extends AbstractStructBase
 {
     /**
@@ -14,17 +15,15 @@ class SetContainerResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\SetContainerReturn
      */
-    public $SetContainerResult;
+    protected ?SetContainerReturn $SetContainerResult = null;
 
     /**
      * Constructor method for SetContainerResponse
      *
      * @uses SetContainerResponse::setSetContainerResult()
      */
-    public function __construct(SetContainerReturn $setContainerResult = null)
+    public function __construct(?SetContainerReturn $setContainerResult = null)
     {
         $this
             ->setSetContainerResult($setContainerResult)
@@ -33,22 +32,19 @@ class SetContainerResponse extends AbstractStructBase
 
     /**
      * Get SetContainerResult value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\SetContainerReturn|null
      */
-    public function getSetContainerResult()
+    public function getSetContainerResult(): ?SetContainerReturn
     {
         return $this->SetContainerResult;
     }
 
     /**
      * Set SetContainerResult value
-     *
-     * @return self
      */
-    public function setSetContainerResult(SetContainerReturn $setContainerResult = null)
+    public function setSetContainerResult(?SetContainerReturn $setContainerResult = null): self
     {
         $this->SetContainerResult = $setContainerResult;
+
         return $this;
     }
 }

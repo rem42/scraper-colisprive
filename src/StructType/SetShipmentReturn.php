@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for SetShipmentReturn StructType
  */
+#[\AllowDynamicProperties]
 class SetShipmentReturn extends AbstractStructBase
 {
     /**
@@ -14,19 +15,15 @@ class SetShipmentReturn extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\ResponseObject
      */
-    public $WSResp;
+    protected ?ResponseObject $WSResp = null;
     /**
      * The ShipCode
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $ShipCode;
+    protected ?string $ShipCode = null;
     /**
      * The PclList
      * Meta information extracted from the WSDL
@@ -35,16 +32,14 @@ class SetShipmentReturn extends AbstractStructBase
      *
      * @var array<\Scraper\ScraperColisPrive\StructType\LightParcelObject>
      */
-    public $PclList;
+    protected ?array $PclList = null;
     /**
      * The MnftUrl
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var string
      */
-    public $MnftUrl;
+    protected ?string $MnftUrl = null;
 
     /**
      * Constructor method for SetShipmentReturn
@@ -54,11 +49,9 @@ class SetShipmentReturn extends AbstractStructBase
      * @uses SetShipmentReturn::setPclList()
      * @uses SetShipmentReturn::setMnftUrl()
      *
-     * @param string                                                         $shipCode
      * @param array<\Scraper\ScraperColisPrive\StructType\LightParcelObject> $pclList
-     * @param string                                                         $mnftUrl
      */
-    public function __construct(ResponseObject $wSResp = null, $shipCode = null, array $pclList = [], $mnftUrl = null)
+    public function __construct(?ResponseObject $wSResp = null, ?string $shipCode = null, ?array $pclList = null, ?string $mnftUrl = null)
     {
         $this
             ->setWSResp($wSResp)
@@ -70,76 +63,72 @@ class SetShipmentReturn extends AbstractStructBase
 
     /**
      * Get WSResp value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\ResponseObject|null
      */
-    public function getWSResp()
+    public function getWSResp(): ?ResponseObject
     {
         return $this->WSResp;
     }
 
     /**
      * Set WSResp value
-     *
-     * @return self
      */
-    public function setWSResp(ResponseObject $wSResp = null)
+    public function setWSResp(?ResponseObject $wSResp = null): self
     {
         $this->WSResp = $wSResp;
+
         return $this;
     }
 
     /**
      * Get ShipCode value
-     *
-     * @return string|null
      */
-    public function getShipCode()
+    public function getShipCode(): ?string
     {
         return $this->ShipCode;
     }
 
     /**
      * Set ShipCode value
-     *
-     * @param string $shipCode
-     *
-     * @return self
      */
-    public function setShipCode($shipCode = null)
+    public function setShipCode(?string $shipCode = null): self
     {
         // validation for constraint: string
         if (null !== $shipCode && !\is_string($shipCode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($shipCode, true), \gettype($shipCode)), __LINE__);
         }
         $this->ShipCode = $shipCode;
+
         return $this;
     }
 
     /**
      * Get PclList value
      *
-     * @return array<\Scraper\ScraperColisPrive\StructType\LightParcelObject>|null
+     * @return array<\Scraper\ScraperColisPrive\StructType\LightParcelObject>
      */
-    public function getPclList()
+    public function getPclList(): ?array
     {
         return $this->PclList;
     }
 
     /**
-     * This method is responsible for validating the values passed to the setPclList method
+     * This method is responsible for validating the value(s) passed to the setPclList method
      * This method is willingly generated in order to preserve the one-line inline validation within the setPclList method
+     * This has to validate that each item contained by the array match the itemType constraint
      *
      * @return string A non-empty message if the values does not match the validation rules
      */
-    public static function validatePclListForArrayConstraintsFromSetPclList(array $values = [])
+    public static function validatePclListForArrayConstraintFromSetPclList(?array $values = []): string
     {
+        if (!\is_array($values)) {
+            return '';
+        }
         $message = '';
         $invalidValues = [];
 
         foreach ($values as $setShipmentReturnPclListItem) {
             // validation for constraint: itemType
-            if (!$setShipmentReturnPclListItem instanceof \Scraper\ScraperColisPrive\StructType\LightParcelObject) {
+            if (!$setShipmentReturnPclListItem instanceof LightParcelObject) {
                 $invalidValues[] = \is_object($setShipmentReturnPclListItem) ? $setShipmentReturnPclListItem::class : sprintf('%s(%s)', \gettype($setShipmentReturnPclListItem), var_export($setShipmentReturnPclListItem, true));
             }
         }
@@ -148,6 +137,7 @@ class SetShipmentReturn extends AbstractStructBase
             $message = sprintf('The PclList property can only contain items of type \Scraper\ScraperColisPrive\StructType\LightParcelObject, %s given', \is_object($invalidValues) ? $invalidValues::class : (\is_array($invalidValues) ? implode(', ', $invalidValues) : \gettype($invalidValues)));
         }
         unset($invalidValues);
+
         return $message;
     }
 
@@ -157,16 +147,15 @@ class SetShipmentReturn extends AbstractStructBase
      * @param array<\Scraper\ScraperColisPrive\StructType\LightParcelObject> $pclList
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function setPclList(array $pclList = [])
+    public function setPclList(?array $pclList = null): self
     {
         // validation for constraint: array
-        if ('' !== ($pclListArrayErrorMessage = self::validatePclListForArrayConstraintsFromSetPclList($pclList))) {
+        if ('' !== ($pclListArrayErrorMessage = self::validatePclListForArrayConstraintFromSetPclList($pclList))) {
             throw new \InvalidArgumentException($pclListArrayErrorMessage, __LINE__);
         }
         $this->PclList = $pclList;
+
         return $this;
     }
 
@@ -174,43 +163,37 @@ class SetShipmentReturn extends AbstractStructBase
      * Add item to PclList value
      *
      * @throws \InvalidArgumentException
-     *
-     * @return self
      */
-    public function addToPclList(LightParcelObject $item)
+    public function addToPclList(LightParcelObject $item): self
     {
         // validation for constraint: itemType
-        if (!$item instanceof \Scraper\ScraperColisPrive\StructType\LightParcelObject) {
+        if (!$item instanceof LightParcelObject) {
             throw new \InvalidArgumentException(sprintf('The PclList property can only contain items of type \Scraper\ScraperColisPrive\StructType\LightParcelObject, %s given', \is_object($item) ? $item::class : (\is_array($item) ? implode(', ', $item) : \gettype($item))), __LINE__);
         }
         $this->PclList[] = $item;
+
         return $this;
     }
 
     /**
      * Get MnftUrl value
-     *
-     * @return string|null
      */
-    public function getMnftUrl()
+    public function getMnftUrl(): ?string
     {
         return $this->MnftUrl;
     }
 
     /**
      * Set MnftUrl value
-     *
-     * @param string $mnftUrl
-     *
-     * @return self
      */
-    public function setMnftUrl($mnftUrl = null)
+    public function setMnftUrl(?string $mnftUrl = null): self
     {
         // validation for constraint: string
         if (null !== $mnftUrl && !\is_string($mnftUrl)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($mnftUrl, true), \gettype($mnftUrl)), __LINE__);
         }
         $this->MnftUrl = $mnftUrl;
+
         return $this;
     }
 }

@@ -3,14 +3,13 @@
     "description": "API SOAP colisprive.com",
     "require": {
         "php": "^8.1",
-        "ext-soap": "*",
+        "ext-dom": "*",
         "ext-mbstring": "*",
-        "wsdltophp/packagebase": "~2.0"
+        "ext-soap": "*",
+        "wsdltophp/packagebase": "~5.0"
     },
     "require-dev": {
-        "rem42/php-cs-fixer-config": "^3.4",
-        "phpstan/phpstan": "^1.8",
-        "phpunit/phpunit": "^9.5"
+        "rem42/php-cs-fixer-config": "^3.4"
     },
     "autoload": {
         "psr-4": {
@@ -18,9 +17,7 @@
         }
     },
     "scripts": {
-        "static-analysis": "./vendor/bin/phpstan analyse src --level=max --no-progress -vvv",
         "code-style-check": "./vendor/bin/php-cs-fixer fix --dry-run --verbose",
-        "code-style-fix": "./vendor/bin/php-cs-fixer fix --using-cache=no",
-        "unit-test": "./vendor/bin/phpunit"
+        "code-style-fix": "./vendor/bin/php-cs-fixer fix --using-cache=no"
     }
 }

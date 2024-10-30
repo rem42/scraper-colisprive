@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for GetPickupPointsListRequest StructType
  */
+#[\AllowDynamicProperties]
 class GetPickupPointsListRequest extends AbstractStructBase
 {
     /**
@@ -15,30 +16,24 @@ class GetPickupPointsListRequest extends AbstractStructBase
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\IdentificationObject
      */
-    public $SecurityID;
+    protected ?IdentificationObject $SecurityID;
     /**
      * The CPPclCode
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var string
      */
-    public $CPPclCode;
+    protected ?string $CPPclCode;
     /**
      * The CsgZC
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var string
      */
-    public $CsgZC;
+    protected ?string $CsgZC;
 
     /**
      * Constructor method for GetPickupPointsListRequest
@@ -46,11 +41,8 @@ class GetPickupPointsListRequest extends AbstractStructBase
      * @uses GetPickupPointsListRequest::setSecurityID()
      * @uses GetPickupPointsListRequest::setCPPclCode()
      * @uses GetPickupPointsListRequest::setCsgZC()
-     *
-     * @param string $cPPclCode
-     * @param string $csgZC
      */
-    public function __construct(IdentificationObject $securityID = null, $cPPclCode = null, $csgZC = null)
+    public function __construct(?IdentificationObject $securityID, ?string $cPPclCode, ?string $csgZC)
     {
         $this
             ->setSecurityID($securityID)
@@ -61,76 +53,63 @@ class GetPickupPointsListRequest extends AbstractStructBase
 
     /**
      * Get SecurityID value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\IdentificationObject
      */
-    public function getSecurityID()
+    public function getSecurityID(): IdentificationObject
     {
         return $this->SecurityID;
     }
 
     /**
      * Set SecurityID value
-     *
-     * @return self
      */
-    public function setSecurityID(IdentificationObject $securityID = null)
+    public function setSecurityID(?IdentificationObject $securityID): self
     {
         $this->SecurityID = $securityID;
+
         return $this;
     }
 
     /**
      * Get CPPclCode value
-     *
-     * @return string
      */
-    public function getCPPclCode()
+    public function getCPPclCode(): string
     {
         return $this->CPPclCode;
     }
 
     /**
      * Set CPPclCode value
-     *
-     * @param string $cPPclCode
-     *
-     * @return self
      */
-    public function setCPPclCode($cPPclCode = null)
+    public function setCPPclCode(?string $cPPclCode): self
     {
         // validation for constraint: string
         if (null !== $cPPclCode && !\is_string($cPPclCode)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($cPPclCode, true), \gettype($cPPclCode)), __LINE__);
         }
         $this->CPPclCode = $cPPclCode;
+
         return $this;
     }
 
     /**
      * Get CsgZC value
-     *
-     * @return string
      */
-    public function getCsgZC()
+    public function getCsgZC(): string
     {
         return $this->CsgZC;
     }
 
     /**
      * Set CsgZC value
-     *
-     * @param string $csgZC
-     *
-     * @return self
      */
-    public function setCsgZC($csgZC = null)
+    public function setCsgZC(?string $csgZC): self
     {
         // validation for constraint: string
         if (null !== $csgZC && !\is_string($csgZC)) {
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($csgZC, true), \gettype($csgZC)), __LINE__);
         }
         $this->CsgZC = $csgZC;
+
         return $this;
     }
 }

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for CancelParcel StructType
  */
+#[\AllowDynamicProperties]
 class CancelParcel extends AbstractStructBase
 {
     /**
@@ -15,17 +16,15 @@ class CancelParcel extends AbstractStructBase
      * - maxOccurs: 1
      * - minOccurs: 1
      * - nillable: true
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\CancelParcelRequest
      */
-    public $CancelParcelRequest;
+    protected ?CancelParcelRequest $CancelParcelRequest;
 
     /**
      * Constructor method for CancelParcel
      *
      * @uses CancelParcel::setCancelParcelRequest()
      */
-    public function __construct(CancelParcelRequest $cancelParcelRequest = null)
+    public function __construct(?CancelParcelRequest $cancelParcelRequest)
     {
         $this
             ->setCancelParcelRequest($cancelParcelRequest)
@@ -34,22 +33,19 @@ class CancelParcel extends AbstractStructBase
 
     /**
      * Get CancelParcelRequest value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\CancelParcelRequest
      */
-    public function getCancelParcelRequest()
+    public function getCancelParcelRequest(): CancelParcelRequest
     {
         return $this->CancelParcelRequest;
     }
 
     /**
      * Set CancelParcelRequest value
-     *
-     * @return self
      */
-    public function setCancelParcelRequest(CancelParcelRequest $cancelParcelRequest = null)
+    public function setCancelParcelRequest(?CancelParcelRequest $cancelParcelRequest): self
     {
         $this->CancelParcelRequest = $cancelParcelRequest;
+
         return $this;
     }
 }

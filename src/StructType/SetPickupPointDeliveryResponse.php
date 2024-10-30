@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive\StructType;
 
@@ -7,6 +7,7 @@ use WsdlToPhp\PackageBase\AbstractStructBase;
 /**
  * This class stands for SetPickupPointDeliveryResponse StructType
  */
+#[\AllowDynamicProperties]
 class SetPickupPointDeliveryResponse extends AbstractStructBase
 {
     /**
@@ -14,17 +15,15 @@ class SetPickupPointDeliveryResponse extends AbstractStructBase
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
      * - minOccurs: 0
-     *
-     * @var \Scraper\ScraperColisPrive\StructType\SetPickupPointDeliveryReturn
      */
-    public $SetPickupPointDeliveryResult;
+    protected ?SetPickupPointDeliveryReturn $SetPickupPointDeliveryResult = null;
 
     /**
      * Constructor method for SetPickupPointDeliveryResponse
      *
      * @uses SetPickupPointDeliveryResponse::setSetPickupPointDeliveryResult()
      */
-    public function __construct(SetPickupPointDeliveryReturn $setPickupPointDeliveryResult = null)
+    public function __construct(?SetPickupPointDeliveryReturn $setPickupPointDeliveryResult = null)
     {
         $this
             ->setSetPickupPointDeliveryResult($setPickupPointDeliveryResult)
@@ -33,22 +32,19 @@ class SetPickupPointDeliveryResponse extends AbstractStructBase
 
     /**
      * Get SetPickupPointDeliveryResult value
-     *
-     * @return \Scraper\ScraperColisPrive\StructType\SetPickupPointDeliveryReturn|null
      */
-    public function getSetPickupPointDeliveryResult()
+    public function getSetPickupPointDeliveryResult(): ?SetPickupPointDeliveryReturn
     {
         return $this->SetPickupPointDeliveryResult;
     }
 
     /**
      * Set SetPickupPointDeliveryResult value
-     *
-     * @return self
      */
-    public function setSetPickupPointDeliveryResult(SetPickupPointDeliveryReturn $setPickupPointDeliveryResult = null)
+    public function setSetPickupPointDeliveryResult(?SetPickupPointDeliveryReturn $setPickupPointDeliveryResult = null): self
     {
         $this->SetPickupPointDeliveryResult = $setPickupPointDeliveryResult;
+
         return $this;
     }
 }

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Scraper\ScraperColisPrive;
 
@@ -13,7 +13,7 @@ class ClassMap
      *
      * @return array<string>
      */
-    final public static function get()
+    final public static function get(): array
     {
         return [
             'TestService' => '\\Scraper\\ScraperColisPrive\\StructType\\TestService',
@@ -26,6 +26,7 @@ class ClassMap
             'DeliveryAddressObject' => '\\Scraper\\ScraperColisPrive\\StructType\\DeliveryAddressObject',
             'AddressObject' => '\\Scraper\\ScraperColisPrive\\StructType\\AddressObject',
             'LocalizationObject' => '\\Scraper\\ScraperColisPrive\\StructType\\LocalizationObject',
+            'TimeInfosObject' => '\\Scraper\\ScraperColisPrive\\StructType\\TimeInfosObject',
             'SetParcelResponse' => '\\Scraper\\ScraperColisPrive\\StructType\\SetParcelResponse',
             'SetParcelReturn' => '\\Scraper\\ScraperColisPrive\\StructType\\SetParcelReturn',
             'SetContainer' => '\\Scraper\\ScraperColisPrive\\StructType\\SetContainer',
