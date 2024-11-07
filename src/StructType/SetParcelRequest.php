@@ -32,6 +32,13 @@ class SetParcelRequest extends AbstractStructBase
      */
     protected string $LabelFormat;
     /**
+     * The IsAdValorem
+     * Meta information extracted from the WSDL
+     * - maxOccurs: 1
+     * - minOccurs: 1
+     */
+    protected bool $IsAdValorem;
+    /**
      * The SubAcc
      * Meta information extracted from the WSDL
      * - maxOccurs: 1
@@ -108,13 +115,6 @@ class SetParcelRequest extends AbstractStructBase
      * - minOccurs: 0
      */
     protected ?string $Brand = null;
-    /**
-     * The ValueADValorem
-     * Meta information extracted from the WSDL
-     * - maxOccurs: 1
-     * - minOccurs: 0
-     */
-    protected ?string $ValueADValorem = null;
     /**
      * The TimeInfos
      * Meta information extracted from the WSDL
@@ -211,6 +211,7 @@ class SetParcelRequest extends AbstractStructBase
      * @uses SetParcelRequest::setPclWeight()
      * @uses SetParcelRequest::setIsPclWithPOD()
      * @uses SetParcelRequest::setLabelFormat()
+     * @uses SetParcelRequest::setIsAdValorem()
      * @uses SetParcelRequest::setSubAcc()
      * @uses SetParcelRequest::setAutoPrintPDF()
      * @uses SetParcelRequest::setCntrCode()
@@ -222,7 +223,6 @@ class SetParcelRequest extends AbstractStructBase
      * @uses SetParcelRequest::setSndZC()
      * @uses SetParcelRequest::setHLQ()
      * @uses SetParcelRequest::setBrand()
-     * @uses SetParcelRequest::setValueADValorem()
      * @uses SetParcelRequest::setTimeInfos()
      * @uses SetParcelRequest::setSecurityID()
      * @uses SetParcelRequest::setOrderID()
@@ -237,12 +237,13 @@ class SetParcelRequest extends AbstractStructBase
      *
      * @param array<\Scraper\ScraperColisPrive\StructType\TimeInfosObject> $timeInfos
      */
-    public function __construct(int $pclWeight, bool $isPclWithPOD, string $labelFormat, ?string $subAcc = null, ?string $autoPrintPDF = null, ?string $cntrCode = null, ?string $destType = null, ?string $destName = null, ?string $sendType = null, ?string $sendName = null, ?string $codeHub = null, ?string $sndZC = null, ?string $hLQ = null, ?string $brand = null, ?string $valueADValorem = null, ?array $timeInfos = null, ?IdentificationObject $securityID, ?string $orderID, ?string $cltNum, ?DeliveryAddressObject $csgAdd, ?string $pclShipDate, ?float $chargeAmnt, ?float $valueAmnt, ?int $pclHeight, ?int $pclWidth, ?int $pclLength)
+    public function __construct(int $pclWeight, bool $isPclWithPOD, string $labelFormat, bool $isAdValorem, ?string $subAcc = null, ?string $autoPrintPDF = null, ?string $cntrCode = null, ?string $destType = null, ?string $destName = null, ?string $sendType = null, ?string $sendName = null, ?string $codeHub = null, ?string $sndZC = null, ?string $hLQ = null, ?string $brand = null, ?array $timeInfos = null, ?IdentificationObject $securityID, ?string $orderID, ?string $cltNum, ?DeliveryAddressObject $csgAdd, ?string $pclShipDate, ?float $chargeAmnt, ?float $valueAmnt, ?int $pclHeight, ?int $pclWidth, ?int $pclLength)
     {
         $this
             ->setPclWeight($pclWeight)
             ->setIsPclWithPOD($isPclWithPOD)
             ->setLabelFormat($labelFormat)
+            ->setIsAdValorem($isAdValorem)
             ->setSubAcc($subAcc)
             ->setAutoPrintPDF($autoPrintPDF)
             ->setCntrCode($cntrCode)
@@ -254,7 +255,6 @@ class SetParcelRequest extends AbstractStructBase
             ->setSndZC($sndZC)
             ->setHLQ($hLQ)
             ->setBrand($brand)
-            ->setValueADValorem($valueADValorem)
             ->setTimeInfos($timeInfos)
             ->setSecurityID($securityID)
             ->setOrderID($orderID)
@@ -336,6 +336,28 @@ class SetParcelRequest extends AbstractStructBase
             throw new \InvalidArgumentException(sprintf('Invalid value(s) %s, please use one of: %s from enumeration class \Scraper\ScraperColisPrive\EnumType\EnumLabelFormat', \is_array($labelFormat) ? implode(', ', $labelFormat) : var_export($labelFormat, true), implode(', ', \Scraper\ScraperColisPrive\EnumType\EnumLabelFormat::getValidValues())), __LINE__);
         }
         $this->LabelFormat = $labelFormat;
+
+        return $this;
+    }
+
+    /**
+     * Get IsAdValorem value
+     */
+    public function getIsAdValorem(): bool
+    {
+        return $this->IsAdValorem;
+    }
+
+    /**
+     * Set IsAdValorem value
+     */
+    public function setIsAdValorem(bool $isAdValorem): self
+    {
+        // validation for constraint: boolean
+        if (null !== $isAdValorem && !\is_bool($isAdValorem)) {
+            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a bool, %s given', var_export($isAdValorem, true), \gettype($isAdValorem)), __LINE__);
+        }
+        $this->IsAdValorem = $isAdValorem;
 
         return $this;
     }
@@ -578,28 +600,6 @@ class SetParcelRequest extends AbstractStructBase
             throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($brand, true), \gettype($brand)), __LINE__);
         }
         $this->Brand = $brand;
-
-        return $this;
-    }
-
-    /**
-     * Get ValueADValorem value
-     */
-    public function getValueADValorem(): ?string
-    {
-        return $this->ValueADValorem;
-    }
-
-    /**
-     * Set ValueADValorem value
-     */
-    public function setValueADValorem(?string $valueADValorem = null): self
-    {
-        // validation for constraint: string
-        if (null !== $valueADValorem && !\is_string($valueADValorem)) {
-            throw new \InvalidArgumentException(sprintf('Invalid value %s, please provide a string, %s given', var_export($valueADValorem, true), \gettype($valueADValorem)), __LINE__);
-        }
-        $this->ValueADValorem = $valueADValorem;
 
         return $this;
     }
