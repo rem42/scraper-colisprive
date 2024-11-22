@@ -89,8 +89,17 @@ class DeliveryAddressObject extends AbstractStructBase
      * @uses DeliveryAddressObject::setDlvrName()
      * @uses DeliveryAddressObject::setDlvrAddress()
      */
-    public function __construct(?string $dlvrEmail = null, ?string $dlvrPhon = null, ?string $dlvrGsm = null, ?string $dlvrDCode = null, ?string $dlvrComments = null, ?string $dlvrLng = null, ?string $dlvrCurrency = null, ?string $dlvrName, ?AddressObject $dlvrAddress)
-    {
+    public function __construct(
+        ?string $dlvrEmail,
+        ?string $dlvrPhon,
+        ?string $dlvrGsm,
+        ?string $dlvrDCode,
+        ?string $dlvrComments,
+        ?string $dlvrLng,
+        ?string $dlvrCurrency,
+        ?string $dlvrName,
+        ?AddressObject $dlvrAddress
+    ) {
         $this
             ->setDlvrEmail($dlvrEmail)
             ->setDlvrPhon($dlvrPhon)

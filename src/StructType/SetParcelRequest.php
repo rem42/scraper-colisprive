@@ -237,8 +237,34 @@ class SetParcelRequest extends AbstractStructBase
      *
      * @param array<\Scraper\ScraperColisPrive\StructType\TimeInfosObject> $timeInfos
      */
-    public function __construct(int $pclWeight, bool $isPclWithPOD, string $labelFormat, bool $isAdValorem, ?string $subAcc = null, ?string $autoPrintPDF = null, ?string $cntrCode = null, ?string $destType = null, ?string $destName = null, ?string $sendType = null, ?string $sendName = null, ?string $codeHub = null, ?string $sndZC = null, ?string $hLQ = null, ?string $brand = null, ?array $timeInfos = null, ?IdentificationObject $securityID, ?string $orderID, ?string $cltNum, ?DeliveryAddressObject $csgAdd, ?string $pclShipDate, ?float $chargeAmnt, ?float $valueAmnt, ?int $pclHeight, ?int $pclWidth, ?int $pclLength)
-    {
+    public function __construct(
+        int $pclWeight,
+        bool $isPclWithPOD,
+        string $labelFormat,
+        bool $isAdValorem,
+        ?string $subAcc,
+        ?string $autoPrintPDF,
+        ?string $cntrCode,
+        ?string $destType,
+        ?string $destName,
+        ?string $sendType,
+        ?string $sendName,
+        ?string $codeHub,
+        ?string $sndZC,
+        ?string $hLQ,
+        ?string $brand,
+        ?array $timeInfos,
+        ?IdentificationObject $securityID,
+        ?string $orderID,
+        ?string $cltNum,
+        ?DeliveryAddressObject $csgAdd,
+        ?string $pclShipDate,
+        ?float $chargeAmnt,
+        ?float $valueAmnt,
+        ?int $pclHeight,
+        ?int $pclWidth,
+        ?int $pclLength
+    ) {
         $this
             ->setPclWeight($pclWeight)
             ->setIsPclWithPOD($isPclWithPOD)

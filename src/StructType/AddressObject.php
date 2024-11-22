@@ -92,8 +92,17 @@ class AddressObject extends AbstractStructBase
      * @uses AddressObject::setCity()
      * @uses AddressObject::setCountry()
      */
-    public function __construct(?string $add2 = null, ?string $add3 = null, ?string $add4 = null, ?LocalizationObject $gPSCoord = null, ?string $company, ?string $add1, ?string $zC, ?string $city, ?string $country)
-    {
+    public function __construct(
+        ?string $add2,
+        ?string $add3,
+        ?string $add4,
+        ?LocalizationObject $gPSCoord,
+        ?string $company,
+        ?string $add1,
+        ?string $zC,
+        ?string $city,
+        ?string $country
+    ) {
         $this
             ->setAdd2($add2)
             ->setAdd3($add3)
